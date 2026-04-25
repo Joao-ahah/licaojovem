@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lição 4 — A Importância da Bíblia</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --azul: #1565C0;
+    --azul-claro: #42A5F5;
+    --preto: #0D0D0D;
+    --branco: #F5F5F0;
+    --cinza: #2A2A2A;
+    --destaque: #FFD600;
+    --card-bg: #181818;
+    --borda: #2e2e2e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0a0a0a 0%, #0d1b3e 100%);
+    padding: 56px 32px 48px;
+    text-align: center;
+    border-bottom: 3px solid var(--azul-claro);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(66,165,245,0.12) 0%, transparent 70%);
+    top: -100px; right: -80px;
+    pointer-events: none;
+  }
+  .licao-badge {
+    display: inline-block;
+    background: var(--azul);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: var(--branco);
+  }
+  .hero h1 span { color: var(--azul-claro); }
+  .hero p {
+    color: #aaa;
+    font-size: 15px;
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--borda);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-pill .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--azul-claro);
+    display: inline-block;
+  }
+
+  /* TIMELINE */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--azul-claro);
+    margin: 60px 0 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--borda);
+  }
+
+  /* BLOCO DE TEMPO */
+  .bloco {
+    background: var(--card-bg);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .bloco:hover { border-color: var(--azul); }
+
+  .bloco-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .tempo-badge {
+    background: var(--azul);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    min-width: 68px;
+    text-align: center;
+  }
+  .tempo-badge.amarelo { background: #B8860B; }
+  .tempo-badge.verde { background: #1B5E20; }
+  .tempo-badge.vermelho { background: #7B0000; }
+  .tempo-badge.roxo { background: #4A148C; }
+
+  .bloco-titulo {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    flex: 1;
+    color: var(--branco);
+  }
+  .bloco-icone {
+    font-size: 20px;
+    opacity: 0.7;
+  }
+  .arrow {
+    font-size: 14px;
+    color: #555;
+    transition: transform 0.3s;
+  }
+  .bloco.open .arrow { transform: rotate(180deg); }
+
+  .bloco-body {
+    display: none;
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--borda);
+  }
+  .bloco.open .bloco-body { display: block; }
+
+  .bloco-desc {
+    color: #bbb;
+    font-size: 14px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+
+  /* PERGUNTAS */
+  .pergunta-box {
+    background: rgba(21, 101, 192, 0.12);
+    border-left: 3px solid var(--azul-claro);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #ddd;
+  }
+  .pergunta-box strong {
+    color: var(--azul-claro);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  /* DINÂMICA */
+  .dinamica-box {
+    background: rgba(255, 214, 0, 0.07);
+    border: 1px solid rgba(255,214,0,0.2);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+  }
+  .dinamica-box .tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--destaque);
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .dinamica-box p {
+    font-size: 14px;
+    color: #ddd;
+    line-height: 1.7;
+  }
+
+  /* VERSO */
+  .verso-box {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    text-align: center;
+    font-style: italic;
+    color: #ccc;
+    font-size: 14px;
+    border: 1px solid var(--borda);
+  }
+  .verso-box span {
+    display: block;
+    color: var(--azul-claro);
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  /* DICA DO PROFESSOR */
+  .dica {
+    background: rgba(74, 20, 140, 0.2);
+    border: 1px solid rgba(150, 100, 220, 0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #ccc;
+  }
+  .dica strong {
+    color: #CE93D8;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* LISTA */
+  ul.lista { padding-left: 20px; margin-top: 8px; }
+  ul.lista li {
+    color: #bbb;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  ul.lista li::marker { color: var(--azul-claro); }
+
+  /* CRONOGRAMA */
+  .cronograma {
+    background: var(--card-bg);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .crono-titulo {
+    background: var(--azul);
+    padding: 14px 24px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .crono-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--borda);
+    font-size: 14px;
+    gap: 16px;
+  }
+  .crono-row:last-child { border-bottom: none; }
+  .crono-min {
+    color: var(--azul-claro);
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    min-width: 50px;
+  }
+  .crono-nome { color: #ddd; flex: 1; }
+  .crono-tipo {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.07);
+    color: #aaa;
+  }
+
+  /* TEXTO BASE */
+  .texto-base {
+    background: linear-gradient(135deg, #0d1b3e, #1a1a1a);
+    border: 1px solid var(--azul);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .texto-base .ref {
+    color: var(--azul-claro);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .texto-base blockquote {
+    font-size: clamp(15px, 2.5vw, 18px);
+    color: var(--branco);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: #444;
+    font-size: 13px;
+    border-top: 1px solid var(--borda);
+  }
+  footer strong { color: #666; }
+
+  @media(max-width: 520px) {
+    .bloco-header { padding: 16px; gap: 10px; }
+    .bloco-titulo { font-size: 14px; }
+    .crono-row { padding: 10px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="licao-badge">Lição 4 · 18–24 de Abril</div>
+  <h1>A Importância<br><span>da Bíblia</span></h1>
+  <p>Recapitulação interativa para a classe de jovens. Duração: <strong style="color:#fff">50 minutos</strong></p>
+  <div class="meta-row">
+    <div class="meta-pill"><span class="dot"></span> 2 Timóteo 3:10–17</div>
+    <div class="meta-pill"><span class="dot"></span> 5 blocos dinâmicos</div>
+    <div class="meta-pill"><span class="dot"></span> Debates & reflexão</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TEXTO BASE -->
+  <div class="texto-base">
+    <span class="ref">Texto-chave · 2 Timóteo 3:16-17</span>
+    <blockquote>
+      "Toda a Escritura é inspirada por Deus e útil para o ensino, para a repreensão, para a correção e para a instrução na justiça, para que o homem de Deus seja perfeito e perfeitamente habilitado para toda boa obra."
+    </blockquote>
+  </div>
+
+  <!-- CRONOGRAMA -->
+  <p class="section-title">Cronograma da Aula</p>
+  <div class="cronograma">
+    <div class="crono-titulo">⏱ Visão Geral · 50 Minutos</div>
+    <div class="crono-row">
+      <span class="crono-min">0–7'</span>
+      <span class="crono-nome">Abertura: Quebra-gelo do Livro Proibido</span>
+      <span class="crono-tipo">Dinâmica</span>
+    </div>
+    <div class="crono-row">
+      <span class="crono-min">7–18'</span>
+      <span class="crono-nome">Bloco 1 · O Livro Mais Poderoso + Autoridade</span>
+      <span class="crono-tipo">Ensino + Debate</span>
+    </div>
+    <div class="crono-row">
+      <span class="crono-min">18–28'</span>
+      <span class="crono-nome">Bloco 2 · Recebendo Instrução</span>
+      <span class="crono-tipo">Reflexão pessoal</span>
+    </div>
+    <div class="crono-row">
+      <span class="crono-min">28–38'</span>
+      <span class="crono-nome">Bloco 3 · A Bíblia como Verdade</span>
+      <span class="crono-tipo">Debate em grupo</span>
+    </div>
+    <div class="crono-row">
+      <span class="crono-min">38–46'</span>
+      <span class="crono-nome">Bloco 4 · Acesso ao Coração de Deus</span>
+      <span class="crono-tipo">Ensino + Aplicação</span>
+    </div>
+    <div class="crono-row">
+      <span class="crono-min">46–50'</span>
+      <span class="crono-nome">Encerramento: Compromisso da Semana</span>
+      <span class="crono-tipo">Aplicação prática</span>
+    </div>
+  </div>
+
+  <!-- BLOCOS DETALHADOS -->
+  <p class="section-title">Blocos Detalhados</p>
+
+  <!-- BLOCO 0: ABERTURA -->
+  <div class="bloco open">
+    <div class="bloco-header" onclick="toggle(this)">
+      <span class="tempo-badge amarelo">0–7 min</span>
+      <span class="bloco-icone">🔥</span>
+      <span class="bloco-titulo">Quebra-gelo — O Livro Proibido</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="bloco-body">
+      <p class="bloco-desc">
+        Comece gerando curiosidade antes de qualquer explicação. O objetivo é conectar o tema à realidade dos jovens logo nos primeiros minutos.
+      </p>
+      <div class="dinamica-box">
+        <span class="tag">✦ Dinâmica de abertura</span>
+        <p>Faça a seguinte pergunta para a turma: <strong style="color:#FFD600">"Se a Bíblia fosse proibida amanhã e você só pudesse guardar UMA frase dela para o resto da vida — qual seria?"</strong><br><br>
+        Dê 1 minuto para pensar, depois peça 3 a 4 voluntários para compartilhar. Anote as respostas no quadro (se possível). Não comente ainda — deixe o suspense.</p>
+      </div>
+      <div class="dica">
+        <strong>💡 Dica para o professor</strong>
+        Ao longo da história, pessoas deram a vida para preservar a Bíblia (mencione isso brevemente). Isso introduz o valor do livro que vamos estudar e cria expectativa imediata.
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 1 -->
+  <div class="bloco">
+    <div class="bloco-header" onclick="toggle(this)">
+      <span class="tempo-badge">7–18 min</span>
+      <span class="bloco-icone">📖</span>
+      <span class="bloco-titulo">Bloco 1 — O Livro + A Autoridade</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="bloco-body">
+      <p class="bloco-desc">
+        Recapitule os estudos de domingo e segunda-feira. A ideia central: a Bíblia é poderosa e tem autoridade sobre nossas opiniões — não o contrário. Satanás trabalha para nos afastar dela, enquanto Deus nos convida para dentro dela.
+      </p>
+
+      <div class="pergunta-box">
+        <strong>🗣 Pergunta de aquecimento (1 min)</strong>
+        "Vocês já passaram dias sem ler a Bíblia? O que aconteceu com o humor, as relações, a paciência de vocês nesse período?"
+      </div>
+
+      <div class="pergunta-box">
+        <strong>💬 Debate rápido (3 min) — dividir em 2 times</strong>
+        Time A: "Hoje a Bíblia está mais acessível do que nunca — celular, áudio, app." <br>
+        Time B: "Mesmo assim, nunca lemos tão pouco."<br>
+        <em style="color:#999;">Quem está certo? O que explica esse paradoxo? (o estudo responde: as distrações cresceram junto com o acesso)</em>
+      </div>
+
+      <div class="pergunta-box">
+        <strong>🔎 Reflexão sobre Autoridade (3 min)</strong>
+        "Você já leu um versículo e pensou: 'Isso não se aplica à minha situação'? Qual é o risco de 'escolhermos a dedo' os textos que nos agradam e ignorarmos os que nos desafiam?"
+      </div>
+
+      <div class="verso-box">
+        <span>2 Timóteo 3:16</span>
+        "Toda a Escritura é inspirada por Deus" — não apenas as partes com as quais já concordamos.
+      </div>
+
+      <div class="dica">
+        <strong>💡 Ponto central a reforçar</strong>
+        A Bíblia não existe para servir às nossas opiniões. É ela que deve nos corrigir — e não o contrário. Ler a Bíblia com arrogância, achando que já sabemos tudo, nos faz deixar de aprender algo novo com Deus.
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 2 -->
+  <div class="bloco">
+    <div class="bloco-header" onclick="toggle(this)">
+      <span class="tempo-badge verde">18–28 min</span>
+      <span class="bloco-icone">❤️</span>
+      <span class="bloco-titulo">Bloco 2 — A Atitude do Coração</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="bloco-body">
+      <p class="bloco-desc">
+        Recapitula terça-feira. O ponto principal: a mesma Palavra pode transformar uma pessoa e não tocar outra — a diferença está na atitude do coração com que nos aproximamos. Fé e abertura são decisivas.
+      </p>
+
+      <div class="dinamica-box">
+        <span class="tag">✦ Atividade de reflexão individual (2 min)</span>
+        <p>Peça aos jovens que fechem os olhos por 30 segundos e respondam mentalmente: <strong style="color:#FFD600">"Qual é a minha atitude quando abro a Bíblia — curiosidade sincera ou obrigação?"</strong><br><br>
+        Depois, quem quiser pode compartilhar com a turma. Não force — o silêncio também é válido.</p>
+      </div>
+
+      <div class="pergunta-box">
+        <strong>🗣 Pergunta de debate (4 min)</strong>
+        "A lição diz que 'muitas vezes, lê-se a Bíblia sem que haja qualquer proveito — em muitos casos, essa leitura é até perniciosa'. Como uma leitura da Bíblia pode ser prejudicial? Quando isso acontece com vocês?"
+      </div>
+
+      <div class="pergunta-box">
+        <strong>💬 Pergunta de aplicação pessoal</strong>
+        "Qual é o maior obstáculo que você enfrenta para ter um tempo real de qualidade com a Bíblia? Correria, sono, distração com o celular, falta de entendimento?"
+      </div>
+
+      <ul class="lista">
+        <li>Coração aberto → a Palavra se aprofunda na alma e gera vida nova (1Pe 1:23)</li>
+        <li>Coração fechado → a instrução não passa da superfície</li>
+        <li>Se a fé é pequena, Deus pode fazê-la crescer (Mc 9:24) — peça por isso!</li>
+      </ul>
+
+      <div class="dica">
+        <strong>💡 Mensagem de esperança para compartilhar</strong>
+        Ninguém precisa chegar pronto. Se a fé é pequena, Deus pode fazê-la crescer. O convite não é para quem já sabe tudo, mas para quem está disposto a se aproximar com humildade.
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 3 -->
+  <div class="bloco">
+    <div class="bloco-header" onclick="toggle(this)">
+      <span class="tempo-badge vermelho">28–38 min</span>
+      <span class="bloco-icone">⚡</span>
+      <span class="bloco-titulo">Bloco 3 — A Bíblia e a Verdade</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="bloco-body">
+      <p class="bloco-desc">
+        Recapitula quarta e quinta. Na era das fake news e da pós-verdade, o que significa dizer que "a Bíblia é verdade"? Jesus não disse que tinha uma verdade — disse que era a Verdade.
+      </p>
+
+      <div class="dinamica-box">
+        <span class="tag">✦ Dinâmica "Verdade ou Opinião?" (3 min)</span>
+        <p>Leia as frases abaixo e peça que os jovens levantem a mão: <strong style="color:#FFD600">Verdade absoluta</strong> ou <strong style="color:#FFD600">Opinião/relativa</strong>?<br><br>
+        1. "A gravidade existe." <br>
+        2. "Chocolate é melhor que baunilha." <br>
+        3. "Matar é errado." <br>
+        4. "Deus existe." <br>
+        5. "Jesus é a verdade."<br><br>
+        <em style="color:#aaa;">Use o debate para mostrar que a cultura hoje quer relativizar tudo — inclusive a fé. Mas Jesus se apresentou como verdade universal, não como uma opção entre muitas.</em>
+        </p>
+      </div>
+
+      <div class="pergunta-box">
+        <strong>💬 Debate em grupo (4 min)</strong>
+        "Em 2017, a revista Time perguntou: 'A verdade está morta?' Como você responderia a isso com base no que estudamos esta semana? Por que a Bíblia ainda é relevante como fonte de verdade em 2025?"
+      </div>
+
+      <div class="pergunta-box">
+        <strong>🔎 Para aprofundar</strong>
+        "Qual é a diferença entre ler a Bíblia <em>como um livro sobre Deus</em> e lê-la <em>como um livro de Deus</em>? Como essa diferença muda a experiência de leitura?"
+      </div>
+
+      <div class="verso-box">
+        <span>João 14:6</span>
+        Jesus disse: "Eu sou o caminho, a verdade e a vida." — Não uma verdade. A verdade.
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 4 -->
+  <div class="bloco">
+    <div class="bloco-header" onclick="toggle(this)">
+      <span class="tempo-badge roxo">38–46 min</span>
+      <span class="bloco-icone">🙏</span>
+      <span class="bloco-titulo">Bloco 4 — Acesso ao Coração de Deus</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="bloco-body">
+      <p class="bloco-desc">
+        Recapitula sexta-feira. A Bíblia não é só um manual moral — ela revela o coração de Deus. Quando lemos, não estamos apenas estudando um livro antigo; estamos acessando o que Deus sente e quer para nossas vidas.
+      </p>
+
+      <div class="dinamica-box">
+        <span class="tag">✦ Imagem poderosa para compartilhar</span>
+        <p>A Bíblia diz que "a boca fala do que está cheio o coração" (Mt 12:34). Do mesmo modo, as Escrituras falam do que está no coração de Deus. <strong style="color:#FFD600">Imagine receber uma carta diretamente do coração de alguém que te ama de forma perfeita</strong> — isso é o que acontece toda vez que você abre a Bíblia.</p>
+      </div>
+
+      <div class="pergunta-box">
+        <strong>🗣 Pergunta final de reflexão (4 min)</strong>
+        "A lição menciona um relato de um culto sem nenhum recurso tecnológico — sem microfone, sem slides, sem playback. Só Bíblias abertas. E foi a reunião mais transformadora. O que isso nos diz sobre nossa dependência de 'apoios' e sobre o poder real da Palavra?"
+      </div>
+
+      <div class="pergunta-box">
+        <strong>💬 Para fechar o bloco</strong>
+        "O que muda na sua relação com Deus quando você percebe que a Bíblia não é um livro de regras, mas uma carta de amor do Criador do universo para você?"
+      </div>
+
+      <div class="dica">
+        <strong>💡 Frase impactante para usar</strong>
+        Ellen White escreveu: "O motivo por que os jovens são tão facilmente induzidos à tentação é não estudarem a Palavra de Deus, nem meditarem nela como devem." — Compartilhe isso com os jovens de forma gentil e desafiadora.
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO ENCERRAMENTO -->
+  <div class="bloco">
+    <div class="bloco-header" onclick="toggle(this)">
+      <span class="tempo-badge amarelo">46–50 min</span>
+      <span class="bloco-icone">🎯</span>
+      <span class="bloco-titulo">Encerramento — Compromisso da Semana</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="bloco-body">
+      <p class="bloco-desc">
+        Feche com uma chamada concreta para ação. Não deixe a aula terminar apenas no plano intelectual — convide cada jovem a fazer uma decisão prática para a semana.
+      </p>
+
+      <div class="dinamica-box">
+        <span class="tag">✦ Compromisso pessoal (3 min)</span>
+        <p>Peça que cada jovem escolha UM compromisso para a próxima semana:<br><br>
+        📅 <strong style="color:#FFD600">A. Horário fixo</strong> — Vou reservar _____ minutos por dia para a Bíblia às _____ horas.<br><br>
+        📖 <strong style="color:#FFD600">B. Livro específico</strong> — Vou ler o livro de ____________ esta semana.<br><br>
+        🤝 <strong style="color:#FFD600">C. Parceiro</strong> — Vou estudar a Bíblia junto com _____________ pelo menos uma vez.<br><br>
+        <em style="color:#aaa;">Se possível, forme duplas para que se responsabilizem mutuamente.</em></p>
+      </div>
+
+      <div class="verso-box">
+        <span>Para encerrar em oração</span>
+        Ore pedindo que Deus abra o coração de cada jovem para que a Palavra não seja apenas lida, mas vivida. Use Salmo 119:105 como inspiração: <em>"Lâmpada para os meus pés é a tua palavra, e luz para o meu caminho."</em>
+      </div>
+
+      <div class="dica">
+        <strong>💡 Retome o quebra-gelo inicial</strong>
+        Volte àquelas frases que os jovens escolheram no início da aula. Pergunte: "Depois dessa recapitulação, alguém mudaria a frase que escolheu? Por quê?" — Cria um arco narrativo completo para a aula.
+      </div>
+    </div>
+  </div>
+
+  <!-- PERGUNTAS BÔNUS -->
+  <p class="section-title">Perguntas Extras se Sobrar Tempo</p>
+
+  <div class="pergunta-box">
+    <strong>➕ Bônus 1</strong>
+    "A lição de quarta-feira lista metáforas da Bíblia: espada, luz, alimento, rocha, martelo, tesouro. Qual dessas metáforas mais representa o papel que a Bíblia tem (ou deveria ter) na sua vida agora?"
+  </div>
+  <div class="pergunta-box">
+    <strong>➕ Bônus 2</strong>
+    "A lição de comunidade conta que antes do NT existir, as igrejas trocavam cartas entre si. A Bíblia nasceu em comunidade. Como isso muda a forma como você enxerga o estudo coletivo da Palavra?"
+  </div>
+  <div class="pergunta-box">
+    <strong>➕ Bônus 3 — Para os mais corajosos</strong>
+    "Você lê a Bíblia mais para confirmar o que já acredita ou genuinamente aberto a ser corrigido por ela? Dê um exemplo concreto."
+  </div>
+
+</div>
+
+<footer>
+  Lição 4 · <strong>A Importância da Bíblia</strong> · 18–24 de Abril · 2Tm 3:10–17<br>
+  Estrutura para recapitulação jovem · 50 minutos
+</footer>
+
+<script>
+  function toggle(header) {
+    const bloco = header.parentElement;
+    bloco.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
