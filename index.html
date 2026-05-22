@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lição 7 — A Oração na Prática</title>
+<title>Lição 8 — Vivendo pela Fé</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
   :root {
-    --roxo: #4A148C;
-    --roxo-claro: #CE93D8;
-    --roxo-medio: #9C27B0;
+    --laranja: #E65100;
+    --laranja-claro: #FF8A65;
+    --laranja-medio: #F4511E;
     --preto: #0D0D0D;
     --branco: #F5F5F0;
     --destaque: #FFD600;
-    --card-bg: #111118;
-    --borda: #252530;
-    --azul: #1565C0;
+    --card-bg: #111110;
+    --borda: #272720;
+    --roxo: #4A148C;
+    --roxo-claro: #CE93D8;
     --verde: #1B5E20;
     --verde-claro: #66BB6A;
+    --azul: #0d47a1;
     --vermelho: #7B0000;
     --teal: #004D40;
-    --amarelo-escuro: #7B5800;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,10 +37,10 @@
 
   /* HERO */
   .hero {
-    background: linear-gradient(135deg, #0a0a12 0%, #1a0a2e 100%);
+    background: linear-gradient(135deg, #0a0a08 0%, #2e1500 100%);
     padding: 56px 32px 48px;
     text-align: center;
-    border-bottom: 3px solid var(--roxo-claro);
+    border-bottom: 3px solid var(--laranja-claro);
     position: relative;
     overflow: hidden;
   }
@@ -47,21 +48,21 @@
     content: '';
     position: absolute;
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(156,39,176,0.10) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(230,81,0,0.12) 0%, transparent 70%);
     top: -150px; right: -100px;
     pointer-events: none;
   }
   .hero::after {
     content: '';
     position: absolute;
-    width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(206,147,216,0.06) 0%, transparent 70%);
-    bottom: -80px; left: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,138,101,0.07) 0%, transparent 70%);
+    bottom: -60px; left: -40px;
     pointer-events: none;
   }
   .licao-badge {
     display: inline-block;
-    background: var(--roxo);
+    background: var(--laranja);
     color: #fff;
     font-family: 'Syne', sans-serif;
     font-size: 11px;
@@ -78,7 +79,7 @@
     line-height: 1.1;
     margin-bottom: 12px;
   }
-  .hero h1 span { color: var(--roxo-claro); }
+  .hero h1 span { color: var(--laranja-claro); }
   .hero p {
     color: #aaa;
     font-size: 15px;
@@ -105,7 +106,7 @@
   .meta-pill .dot {
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: var(--roxo-claro);
+    background: var(--laranja-claro);
     display: inline-block;
   }
 
@@ -120,7 +121,7 @@
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--roxo-claro);
+    color: var(--laranja-claro);
     margin: 60px 0 28px;
     display: flex;
     align-items: center;
@@ -142,7 +143,7 @@
     overflow: hidden;
     transition: border-color 0.2s;
   }
-  .bloco:hover { border-color: var(--roxo-medio); }
+  .bloco:hover { border-color: var(--laranja); }
 
   .bloco-header {
     display: flex;
@@ -153,7 +154,7 @@
     user-select: none;
   }
   .tempo-badge {
-    background: var(--roxo);
+    background: var(--laranja);
     color: #fff;
     font-family: 'Syne', sans-serif;
     font-size: 12px;
@@ -164,10 +165,11 @@
     min-width: 68px;
     text-align: center;
   }
-  .tempo-badge.amarelo  { background: var(--amarelo-escuro); }
-  .tempo-badge.azul     { background: #0d47a1; }
+  .tempo-badge.amarelo  { background: #7B5800; }
+  .tempo-badge.azul     { background: var(--azul); }
   .tempo-badge.vermelho { background: var(--vermelho); }
   .tempo-badge.teal     { background: var(--teal); }
+  .tempo-badge.roxo     { background: var(--roxo); }
   .tempo-badge.verde    { background: var(--verde); }
 
   .bloco-titulo {
@@ -198,8 +200,8 @@
 
   /* PERGUNTA */
   .pergunta-box {
-    background: rgba(74, 20, 140, 0.15);
-    border-left: 3px solid var(--roxo-claro);
+    background: rgba(230, 81, 0, 0.12);
+    border-left: 3px solid var(--laranja-claro);
     padding: 14px 18px;
     border-radius: 0 8px 8px 0;
     margin-bottom: 10px;
@@ -207,7 +209,7 @@
     color: #ddd;
   }
   .pergunta-box strong {
-    color: var(--roxo-claro);
+    color: var(--laranja-claro);
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -249,7 +251,7 @@
   }
   .verso-box span {
     display: block;
-    color: var(--roxo-claro);
+    color: var(--laranja-claro);
     font-style: normal;
     font-size: 11px;
     letter-spacing: 2px;
@@ -260,8 +262,8 @@
 
   /* DICA */
   .dica {
-    background: rgba(21, 94, 32, 0.18);
-    border: 1px solid rgba(102,187,106,0.25);
+    background: rgba(74, 20, 140, 0.18);
+    border: 1px solid rgba(206,147,216,0.25);
     border-radius: 8px;
     padding: 14px 18px;
     margin-top: 12px;
@@ -269,7 +271,7 @@
     color: #ccc;
   }
   .dica strong {
-    color: var(--verde-claro);
+    color: var(--roxo-claro);
     display: block;
     margin-bottom: 6px;
     font-size: 11px;
@@ -279,8 +281,8 @@
 
   /* HIGHLIGHT */
   .highlight-box {
-    background: rgba(74,20,140,0.18);
-    border: 1px solid rgba(206,147,216,0.2);
+    background: rgba(230,81,0,0.10);
+    border: 1px solid rgba(255,138,101,0.2);
     border-radius: 8px;
     padding: 16px 18px;
     margin-bottom: 10px;
@@ -291,40 +293,17 @@
   }
   .highlight-box .fonte {
     display: block;
-    color: var(--roxo-claro);
+    color: var(--laranja-claro);
     font-style: normal;
     font-size: 11px;
     letter-spacing: 1px;
     margin-top: 8px;
   }
 
-  /* LISTA DE PERGUNTAS PRÁTICAS */
-  .checklist { list-style: none; margin-top: 10px; }
-  .checklist li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 14px;
-    color: #ccc;
-    margin-bottom: 8px;
-    line-height: 1.6;
-  }
-  .checklist li::before {
-    content: '→';
-    color: var(--roxo-claro);
-    flex-shrink: 0;
-    margin-top: 1px;
-    font-weight: 700;
-  }
-
-  ul.lista { padding-left: 20px; margin-top: 8px; }
-  ul.lista li { color: #bbb; font-size: 14px; margin-bottom: 6px; }
-  ul.lista li::marker { color: var(--roxo-claro); }
-
-  /* ANA CARD — narrative card */
-  .ana-card {
-    background: linear-gradient(135deg, rgba(74,20,140,0.25), rgba(0,0,0,0.5));
-    border: 1px solid rgba(206,147,216,0.2);
+  /* WIFI CARD */
+  .wifi-card {
+    background: linear-gradient(135deg, rgba(230,81,0,0.18), rgba(0,0,0,0.5));
+    border: 1px solid rgba(255,138,101,0.2);
     border-radius: 12px;
     padding: 20px 22px;
     margin-bottom: 14px;
@@ -332,8 +311,8 @@
     color: #ddd;
     line-height: 1.8;
   }
-  .ana-card .ana-title {
-    color: var(--roxo-claro);
+  .wifi-card .wifi-title {
+    color: var(--laranja-claro);
     font-family: 'Syne', sans-serif;
     font-size: 13px;
     font-weight: 700;
@@ -342,6 +321,61 @@
     align-items: center;
     gap: 8px;
   }
+
+  /* ESCALADA DE EXEMPLOS */
+  .exemplo-list { list-style: none; margin-top: 10px; }
+  .exemplo-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--borda);
+    line-height: 1.6;
+  }
+  .exemplo-list li .nome {
+    color: var(--laranja-claro);
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  /* DUPLA */
+  .dupla {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  @media(max-width: 560px) { .dupla { grid-template-columns: 1fr; } }
+  .dupla-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.6;
+  }
+  .dupla-card .label {
+    color: var(--laranja-claro);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: 500;
+  }
+
+  ul.lista { padding-left: 20px; margin-top: 8px; }
+  ul.lista li { color: #bbb; font-size: 14px; margin-bottom: 6px; }
+  ul.lista li::marker { color: var(--laranja-claro); }
 
   /* CRONOGRAMA */
   .cronograma {
@@ -352,7 +386,7 @@
     margin-bottom: 40px;
   }
   .crono-titulo {
-    background: var(--roxo);
+    background: var(--laranja);
     padding: 14px 24px;
     font-family: 'Syne', sans-serif;
     font-size: 13px;
@@ -369,7 +403,7 @@
   }
   .crono-row:last-child { border-bottom: none; }
   .crono-min {
-    color: var(--roxo-claro);
+    color: var(--laranja-claro);
     font-family: 'Syne', sans-serif;
     font-size: 13px;
     font-weight: 700;
@@ -386,15 +420,15 @@
 
   /* TEXTO BASE */
   .texto-base {
-    background: linear-gradient(135deg, #120820, #1a1a1a);
-    border: 1px solid var(--roxo-medio);
+    background: linear-gradient(135deg, #1a0800, #1a1a1a);
+    border: 1px solid var(--laranja);
     border-radius: 12px;
     padding: 28px;
     margin-bottom: 40px;
     text-align: center;
   }
   .texto-base .ref {
-    color: var(--roxo-claro);
+    color: var(--laranja-claro);
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -406,34 +440,6 @@
     color: var(--branco);
     font-style: italic;
     line-height: 1.8;
-  }
-
-  /* PERGUNTA DUPLA */
-  .dupla {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 12px 0;
-  }
-  @media(max-width: 560px) { .dupla { grid-template-columns: 1fr; } }
-
-  .dupla-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--borda);
-    border-radius: 8px;
-    padding: 14px;
-    font-size: 13px;
-    color: #ccc;
-    line-height: 1.6;
-  }
-  .dupla-card .label {
-    color: var(--roxo-claro);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    display: block;
-    font-weight: 500;
   }
 
   footer {
@@ -457,13 +463,13 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="licao-badge">Lição 7 · 9–15 de Maio</div>
-  <h1>A Oração<br><span>na Prática</span></h1>
+  <div class="licao-badge">Lição 8 · 16–22 de Maio</div>
+  <h1>Vivendo<br><span>pela Fé</span></h1>
   <p>Recapitulação interativa para a classe de jovens. Duração: <strong style="color:#fff">50 minutos</strong></p>
   <div class="meta-row">
-    <div class="meta-pill"><span class="dot"></span> 1 Samuel 1:1–28</div>
+    <div class="meta-pill"><span class="dot"></span> Marcos 9:14–29</div>
     <div class="meta-pill"><span class="dot"></span> 5 blocos dinâmicos</div>
-    <div class="meta-pill"><span class="dot"></span> História de Ana + debate real</div>
+    <div class="meta-pill"><span class="dot"></span> Fé, dúvida e movimento</div>
   </div>
 </div>
 
@@ -471,10 +477,9 @@
 
   <!-- TEXTO BASE -->
   <div class="texto-base">
-    <span class="ref">Base da semana · 1 Samuel 1 + Isaías 55:6</span>
+    <span class="ref">Texto-chave · Marcos 9:23–24</span>
     <blockquote>
-      "Busquem o Senhor enquanto Ele pode ser encontrado; invoquem-No enquanto Ele está perto."<br>
-      <span style="font-size:13px; color:#aaa; font-style:normal; margin-top:8px; display:block;">— Isaías 55:6</span>
+      "'Se o Senhor pode fazer alguma coisa…' Jesus respondeu: 'Se podes? Tudo é possível ao que crê!' O homem exclamou: 'Eu creio! Ajude-me na minha falta de fé!'"
     </blockquote>
   </div>
 
@@ -483,34 +488,34 @@
   <div class="cronograma">
     <div class="crono-titulo">⏱ Visão Geral · 50 Minutos</div>
     <div class="crono-row">
-      <span class="crono-min">0–8'</span>
-      <span class="crono-nome">Abertura: "Deus me ouviu?" — sondagem do grupo</span>
+      <span class="crono-min">0–7'</span>
+      <span class="crono-nome">Abertura: Menos Wi-Fi, Mais Wi-Fé</span>
       <span class="crono-tipo">Quebra-gelo</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">8–18'</span>
-      <span class="crono-nome">Bloco 1 · Ana: Confiança + Oração Perseverante</span>
-      <span class="crono-tipo">Narrativa + Debate</span>
+      <span class="crono-min">7–17'</span>
+      <span class="crono-nome">Bloco 1 · O Wi-Fi Divino + Fé Viva</span>
+      <span class="crono-tipo">Ensino + Debate</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">18–28'</span>
-      <span class="crono-nome">Bloco 2 · O Aparente Silêncio de Deus</span>
+      <span class="crono-min">17–27'</span>
+      <span class="crono-nome">Bloco 2 · Fé e Sentimentos — quando não "sentimos" Deus</span>
       <span class="crono-tipo">Reflexão honesta</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">28–38'</span>
-      <span class="crono-nome">Bloco 3 · Dúvidas sobre a Oração — as perguntas reais</span>
-      <span class="crono-tipo">Perguntas & respostas</span>
+      <span class="crono-min">27–37'</span>
+      <span class="crono-nome">Bloco 3 · A Fé que se Revela nas Atitudes</span>
+      <span class="crono-tipo">Debate + Exemplos bíblicos</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">38–46'</span>
-      <span class="crono-nome">Bloco 4 · Dependência, Humildade e a Oração que Transforma</span>
+      <span class="crono-min">37–45'</span>
+      <span class="crono-nome">Bloco 4 · Vivendo pela Fé — fé que se move</span>
       <span class="crono-tipo">Aplicação prática</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">46–50'</span>
-      <span class="crono-nome">Encerramento: Oração em círculo</span>
-      <span class="crono-tipo">Prática real</span>
+      <span class="crono-min">45–50'</span>
+      <span class="crono-nome">Encerramento: "Ajuda-me na minha falta de fé"</span>
+      <span class="crono-tipo">Compromisso + Oração</span>
     </div>
   </div>
 
@@ -520,27 +525,27 @@
   <!-- ABERTURA -->
   <div class="bloco open">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge amarelo">0–8 min</span>
-      <span class="bloco-icone">🤔</span>
-      <span class="bloco-titulo">Abertura — "Deus me ouviu?"</span>
+      <span class="tempo-badge amarelo">0–7 min</span>
+      <span class="bloco-icone">📶</span>
+      <span class="bloco-titulo">Abertura — Menos Wi-Fi, Mais Wi-Fé</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Comece com uma pergunta que todo jovem já sentiu, mas talvez nunca tenha falado em voz alta. O objetivo é criar segurança para o debate honesto que virá — sem julgamento, com empatia.
+        A tirinha da lição resume tudo: o jovem sai em busca de conexão, descobre que a melhor conexão é com Deus, e vai de joelhos. Use esse gancho visual para abrir o debate com leveza — e ir ficando mais sério à medida que a aula avança.
       </p>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Dinâmica de sondagem anônima — 5 minutos</span>
-        <p>Distribua um pedacinho de papel para cada jovem. Peça que respondam com honestidade — sem colocar o nome — à seguinte pergunta:<br><br>
-        <strong style="color:#FFD600">"Você já orou por algo muito importante e sentiu que Deus estava em silêncio? Como você reagiu?"</strong><br><br>
-        Dobre o papel e entregue. Você embaralha e lê algumas respostas em voz alta, de forma anônima. Isso cria identificação imediata e mostra que não estão sozinhos nesse sentimento.<br><br>
-        <em style="color:#aaa;">Se a turma for pequena ou próxima, pode ser verbal. O anonimato é uma escolha — não uma obrigação.</em></p>
+        <span class="tag">✦ Dinâmica de abertura rápida — 4 minutos</span>
+        <p>Faça a seguinte pergunta para a turma:<br><br>
+        <strong style="color:#FFD600">"Você passa mais tempo conectado ao Wi-Fi ou ao 'Wi-Fé'? Dê uma nota de 0 a 10 para cada — sem mentir."</strong><br><br>
+        Peça que 3 ou 4 voluntários respondam em voz alta. Depois faça a virada:<br><br>
+        <em style="color:#aaa;">"A lição desta semana nos desafia exatamente aqui: a fé é como o wi-fi — invisível, mas capaz de nos conectar ao que realmente precisamos. Sem ela, a conexão cai. E a questão da semana é: como manter essa conexão viva mesmo quando a 'antena' parece fraca?"</em></p>
       </div>
 
-      <div class="dica">
-        <strong>💡 Conexão com a lição</strong>
-        A história de Ana não é sobre uma mulher perfeita — é sobre alguém que chorou, persistiu e confiou mesmo sem receber a resposta imediata. A lição desta semana fala diretamente com quem já sentiu isso.
+      <div class="wifi-card">
+        <div class="wifi-title">📶 A metáfora central da semana</div>
+        A fé é invisível — mas real. Ela nos conecta a Deus da mesma forma que o wi-fi nos conecta à internet. Você não vê as ondas, mas sente os efeitos quando está conectado. E sente falta quando a conexão cai.
       </div>
     </div>
   </div>
@@ -548,39 +553,45 @@
   <!-- BLOCO 1 -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge">8–18 min</span>
-      <span class="bloco-icone">🙏</span>
-      <span class="bloco-titulo">Bloco 1 — Ana: Confiança e Oração Perseverante</span>
+      <span class="tempo-badge">7–17 min</span>
+      <span class="bloco-icone">🌱</span>
+      <span class="bloco-titulo">Bloco 1 — O Wi-Fi Divino + Fé Viva</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula domingo e segunda. A história de Ana é o fio condutor de toda a semana. Ela não é um exemplo de fé perfeita — é um exemplo de fé que não desiste. E é justamente nessa fé ferida, mas persistente, que Deus age de forma extraordinária.
+        Recapitula domingo e segunda. A fé não é algo que fabricamos — é um dom de Deus (Ef 2:8,9). Cada um recebe uma "medida de fé" (Rm 12:3). O que fazemos com ela é nossa decisão. A fé é viva: pode crescer, pode enfraquecer — e nunca exige perfeição para começar.
       </p>
 
-      <div class="ana-card">
-        <div class="ana-title">📖 Quem era Ana? (contextualize rapidamente)</div>
-        Ana vivia num casamento polígamo, era desprezada pela rival, sem filhos — e nenhum médico podia ajudá-la. Seu marido a amava, mas nem ele entendia sua dor (1Sm 1:8). Deus também a amava, mas ela se sentia abandonada por Ele. Ainda assim, ela não deixou que a amargura a afastasse do Senhor. Ela foi ao templo e orou — com lágrimas e clamor silencioso.
-      </div>
-
       <div class="pergunta-box">
-        <strong>🗣 Pergunta de aquecimento (2 min)</strong>
-        "A lição diz que 'enquanto a oração de alguns enfraquece com o tempo, a de Ana se tornava mais forte.' O que você acha que alimentava essa força no meio de tanto sofrimento?"
+        <strong>🗣 Pergunta de abertura (2 min)</strong>
+        "Em apenas 60 segundos — como você descreveria sua fé em Deus agora? Forte, fraca, confusa, crescendo, estagnada? O que essa resposta revela sobre sua relação com Ele?"
       </div>
 
       <div class="pergunta-box">
         <strong>💬 Debate (4 min)</strong>
-        "A resposta de Deus para Ana gerou Samuel — que se tornou um dos maiores profetas de Israel e transformou a história de uma nação inteira. Ana pediu um filho. Deus usou isso para muito mais do que ela imaginava. O que isso nos diz sobre os nossos pedidos em oração?"
+        "O pai de Marcos 9 disse: 'Se o Senhor pode fazer alguma coisa.' Jesus virou a pergunta: 'Se podes? Tudo é possível ao que crê.' Por que Jesus colocou a questão de volta no homem? O que isso diz sobre onde mora o 'problema' — em Deus ou em nós?"
+      </div>
+
+      <div class="dupla">
+        <div class="dupla-card">
+          <span class="label">A fé não é estática</span>
+          Céticos convictos podem se tornar crentes firmes — e o contrário também é verdadeiro. Alguém que crê desde a infância pode perder a fé se não a nutrir (Hb 10:23).
+        </div>
+        <div class="dupla-card">
+          <span class="label">Jesus começa com o mínimo</span>
+          Ele não exige fé perfeita. Começa com algo mínimo — uma fé do tamanho de um grão de mostarda (Mt 17:20). Se estivermos dispostos a cooperar, Deus fará ela crescer.
+        </div>
       </div>
 
       <div class="verso-box">
-        <span>1 Samuel 1:10</span>
-        "Com profunda angústia, Ana orava ao Senhor, chorando amargamente." — Deus não pede que fingimos estar bem para orar. Ele aceita a dor como ela é.
+        <span>Marcos 9:24</span>
+        "Eu creio! Ajude-me na minha falta de fé!" — Essa é a oração mais honesta da Bíblia. Fé e dúvida andando juntas — e Jesus respondeu a isso.
       </div>
 
       <div class="dica">
-        <strong>💡 Ponto central para reforçar</strong>
-        A oração é a oportunidade perfeita de render nossa vontade e aceitar os planos de Deus — não os nossos. Não porque Ele seja indiferente, mas porque Ele enxerga o quadro completo que nós não conseguimos ver.
+        <strong>💡 Ponto-chave para reforçar</strong>
+        A geração de hoje busca sinais para crer. Mas os sinais já estão ao nosso redor: profecias cumpridas, a criação, a Bíblia, histórias de transformação. O segredo é focar no que fortalece a fé, não no que a corrói.
       </div>
     </div>
   </div>
@@ -588,44 +599,39 @@
   <!-- BLOCO 2 -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge azul">18–28 min</span>
-      <span class="bloco-icone">🌑</span>
-      <span class="bloco-titulo">Bloco 2 — O Aparente Silêncio de Deus</span>
+      <span class="tempo-badge azul">17–27 min</span>
+      <span class="bloco-icone">🌊</span>
+      <span class="bloco-titulo">Bloco 2 — Fé e Sentimentos: quando não "sentimos" Deus</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula terça. Este é o bloco mais honesto e vulnerável da aula. A lição não foge da pergunta difícil: e quando parece que Deus não responde? O que fazer quando o silêncio parece eterno?
+        Recapitula terça. Um dos maiores equívocos da vida cristã: confundir fé com sentimento. Muitos jovens acham que não têm fé porque não "sentem" Deus perto. Mas fé é crer e confiar mesmo na escuridão, mesmo quando não entendemos o que está acontecendo.
       </p>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Dinâmica de identificação — "Você já viveu isso?" (3 min)</span>
-        <p>Leia os exemplos bíblicos abaixo e pergunte à turma: <strong style="color:#FFD600">"Qual desses mais se parece com o que você já viveu — ou com o que alguém próximo a você viveu?"</strong><br><br>
-        🔹 <strong>Davi</strong> — orou para construir o templo, Deus disse não (1Cr 17).<br>
-        🔹 <strong>Jesus</strong> — orou para que o cálice passasse. Não passou (Mt 26:39-44).<br>
-        🔹 <strong>Paulo</strong> — pediu cura para sua enfermidade três vezes. A resposta foi: "Minha graça é suficiente" (2Co 12:7-10).<br>
-        🔹 <strong>Ana</strong> — esperou anos sem resposta antes de ver o milagre.<br><br>
-        <em style="color:#aaa;">Deixe a turma se identificar sem pressa. Esse reconhecimento cria empatia e abre o coração.</em></p>
-      </div>
-
-      <div class="pergunta-box">
-        <strong>💬 Debate central (4 min)</strong>
-        "A lição diz que 'a forma como reagimos quando parece que Deus não responde depende da maneira como O percebemos.' Se você vê Deus como distante e desinteressado, o que acontece com sua fé? E se você O vê como alguém que enxerga o quadro completo?"
-      </div>
-
-      <div class="pergunta-box">
-        <strong>🔎 Reflexão pessoal (2 min)</strong>
-        "Quando a resposta do Senhor é 'não' ou 'espera', o que normalmente acontece com a sua oração? Ela esfria, você para, ou persiste como Ana?"
+        <span class="tag">✦ Dinâmica "Sentimento ou Fé?" — 4 minutos</span>
+        <p>Leia as situações abaixo e peça que a turma responda: isso é <strong style="color:#FFD600">sentimento</strong> ou <strong style="color:#FFD600">fé</strong>?<br><br>
+        🔸 "Hoje o culto foi incrível, sinto Deus muito perto. Estou animado para ler a Bíblia."<br>
+        🔸 "Não sinto nada faz semanas. Mas vou continuar orando e lendo porque sei que Ele está aqui."<br>
+        🔸 "Hoje estou deprimido. Não tenho vontade de ir à igreja. Mas vou mesmo assim."<br>
+        🔸 "Me sinto tão cheio do Espírito agora — com certeza Deus me ouviu."<br><br>
+        <em style="color:#aaa;">O objetivo é mostrar que sentimentos são reais mas não são termômetro da presença de Deus. Fé age mesmo quando o sentimento contradiz.</em></p>
       </div>
 
       <div class="highlight-box">
-        "Quando queremos que Deus, e não nós, seja glorificado, podemos descansar na certeza de que Ele escreve nossa história segundo a luz da eternidade."
-        <span class="fonte">— Lição de terça-feira, 12 de Maio</span>
+        "Muitos não exercem aquela fé que têm o privilégio e o dever de exercer, esperando muitas vezes experimentar aquela sensação que unicamente a fé pode trazer. Sentimento não é fé. Cabe a nós exercitar a fé; mas aquele sentimento de alegria e bênçãos, Deus é quem os dá."
+        <span class="fonte">— Ellen G. White, Primeiros Escritos, p. 86</span>
+      </div>
+
+      <div class="pergunta-box">
+        <strong>💬 Debate (3 min)</strong>
+        "Quando seus sentimentos dizem o contrário — que Deus está longe, que a fé não funciona, que você não é cristão o suficiente — o que você faz para lembrar quem Deus realmente é? Quais hábitos te mantêm conectado à 'voz certa'?"
       </div>
 
       <div class="dica">
-        <strong>💡 Mensagem prática para deixar clara</strong>
-        O silêncio de Deus não é ausência. A lição de comunidade lembra que mesmo no silêncio, Ele está "agindo de forma discreta, fortalecendo nossa fé, amadurecendo nossa esperança e nos ensinando a descansar no Seu tempo."
+        <strong>💡 Ponto central</strong>
+        A fé não depende de emoções ou momentos empolgantes. Ela se apoia na Palavra de Deus (Rm 10:17) e exige uma decisão consciente, mesmo quando vai contra o que sentimos. O sentimento de alegria vem como consequência — não como pré-requisito.
       </div>
     </div>
   </div>
@@ -633,41 +639,38 @@
   <!-- BLOCO 3 -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge vermelho">28–38 min</span>
-      <span class="bloco-icone">❓</span>
-      <span class="bloco-titulo">Bloco 3 — As Dúvidas Reais sobre a Oração</span>
+      <span class="tempo-badge vermelho">27–37 min</span>
+      <span class="bloco-icone">⚡</span>
+      <span class="bloco-titulo">Bloco 3 — A Fé que se Revela nas Atitudes</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula quinta. A lição de quinta enfrenta de frente as perguntas que os jovens têm mas raramente fazem na Escola Sabatina. Use esse bloco para criar um espaço seguro para dúvidas reais — sem respostas prontas e superficiais.
+        Recapitula quarta e a lição de comunidade. A fé bíblica nunca é passiva — ela gera movimento. A Bíblia está cheia de pessoas que creram com dúvida no coração, mas que agiram. E foi justamente no ato de se mover que a fé se revelou e cresceu.
       </p>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Dinâmica "Responda com a lição" — rodada rápida (5 min)</span>
-        <p>Apresente cada pergunta abaixo para a turma. Peça que respondam primeiro com o que <em>eles acham</em>, depois complemente com o que a lição diz:<br><br>
-        <strong style="color:#FFD600">Pergunta 1 — "Por que orar se Deus já sabe de tudo?"</strong><br>
-        <em style="color:#aaa;">(Resposta da lição: a oração não informa Deus — ela nos eleva a Ele. Interrompe a correria e nos coloca aos Seus pés.)</em><br><br>
-        <strong style="color:#FFD600">Pergunta 2 — "Por que orar quando tudo vai bem?"</strong><br>
-        <em style="color:#aaa;">(Resposta: a autossuficiência e o orgulho são as maiores barreiras. Se os anjos perfeitos O adoram, por que nós acharíamos que precisamos menos?)</em><br><br>
-        <strong style="color:#FFD600">Pergunta 3 — "O que faz a fé ter papel tão importante na oração?"</strong><br>
-        <em style="color:#aaa;">(Resposta: a dúvida enfraquece a experiência. A fé não exige certeza absoluta — exige crer que Ele pode e que tem sabedoria para fazer o que é certo.)</em></p>
+        <span class="tag">✦ Dinâmica dos heróis "imperfeitos" da fé — 4 minutos</span>
+        <p>Apresente cada personagem e pergunte: <strong style="color:#FFD600">"O que essa pessoa fez com a dúvida que tinha?"</strong></p>
       </div>
 
-      <div class="dupla">
-        <div class="dupla-card">
-          <span class="label">Com quem orar?</span>
-          Em particular (Mt 6:6), em família ou pequenos grupos (At 12:12), e com toda a igreja (Tg 5:13-16). Cada contexto tem um valor diferente — e todos são necessários.
-        </div>
-        <div class="dupla-card">
-          <span class="label">Como ouvir a Deus?</span>
-          Unir oração e estudo das Escrituras. Evitar ouvir apenas nossos próprios pensamentos. A Bíblia filtra o que é voz de Deus e o que é voz do nosso ego ou medo.
-        </div>
-      </div>
+      <ul class="exemplo-list">
+        <li><span class="nome">Abraão</span> Creu, mas riu quando Deus prometeu um filho (Gn 17:17). Mesmo assim foi considerado pai da fé.</li>
+        <li><span class="nome">Gideão</span> Pediu prova após prova antes de agir (Jz 6:36-40). Mesmo assim foi usado por Deus.</li>
+        <li><span class="nome">Pedro</span> Afundou, mas foi o único a andar sobre as águas (Mt 14:29-30). Tentou — os outros não.</li>
+        <li><span class="nome">Noé</span> Construiu um barco sem ver chuva. A fé virou madeira, pregos e trabalho.</li>
+        <li><span class="nome">Josué</span> Deu 7 voltas em silêncio ao redor de Jericó. A vitória veio pela obediência, não pela lógica.</li>
+        <li><span class="nome">Davi</span> Correu em direção ao gigante — não fugiu. A fé se revelou nas pernas em movimento.</li>
+      </ul>
 
       <div class="pergunta-box">
-        <strong>💬 Para fechar o bloco (2 min)</strong>
-        "Qual dessas três perguntas sobre a oração mais ressoa com o que você sente hoje? Por quê?"
+        <strong>💬 Debate central (3 min)</strong>
+        "C. S. Lewis escreveu: 'A fé é a arte de segurar firme nas coisas que a razão aceitou, mesmo quando os sentimentos mudam.' E a lição de comunidade diz: 'A fé que não se move, morre.' Como você une essas duas ideias? O que seria uma fé que se move na sua vida prática esta semana?"
+      </div>
+
+      <div class="verso-box">
+        <span>Tiago 2:18</span>
+        "Mostre-me essa sua fé sem as obras, e eu, com as obras, lhe mostrarei a minha fé." — Fé sem movimento não é fé: é concordância teórica.
       </div>
     </div>
   </div>
@@ -675,41 +678,34 @@
   <!-- BLOCO 4 -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge teal">38–46 min</span>
-      <span class="bloco-icone">💜</span>
-      <span class="bloco-titulo">Bloco 4 — Dependência, Humildade e a Oração que Transforma</span>
+      <span class="tempo-badge teal">37–45 min</span>
+      <span class="bloco-icone">🏔️</span>
+      <span class="bloco-titulo">Bloco 4 — Vivendo pela Fé na Prática</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula sexta e comunidade. O ponto mais profundo da semana: a oração não transforma primeiro o que está ao nosso redor — ela transforma o que está dentro de nós. E isso já é suficiente para recomeçar.
+        Recapitula a lição de comunidade. Erik Weihenmayer, alpinista cego que escalou o Everest, disse: "aprendi a confiar na voz certa." Sem enxergar o caminho e sem garantias, ele simplesmente seguia a orientação do guia. Esse é o retrato mais claro de viver pela fé.
       </p>
 
       <div class="pergunta-box">
-        <strong>🗣 Pergunta de abertura (2 min)</strong>
-        "No Getsêmani, Jesus não orou para escapar da cruz — mas para receber forças para enfrentá-la. Que diferença faz entender a oração assim? Como isso muda o que você pede a Deus?"
+        <strong>🗣 Pergunta de aplicação (3 min)</strong>
+        "Em qual área da sua vida a fé precisa virar atitude prática nesta semana? Família, faculdade, saúde, relacionamentos, missão? O que você tem adiado esperando 'sentir mais certeza' antes de agir?"
       </div>
 
       <div class="highlight-box">
-        "Por meio da oração sincera, somos ligados com a mente do Infinito. Pode ser que não tenhamos fortes evidências de que a face de nosso Redentor se inclina sobre nós em compaixão e amor, mas é isso que realmente acontece. Podemos não sentir Seu toque, mas Sua mão compassiva e amorosa está sobre nós."
-        <span class="fonte">— Ellen G. White, Caminho a Cristo, p. 61</span>
+        "A fé em Jesus aumentará à medida que vocês forem se relacionando mais com o Redentor pela meditação em Sua vida imaculada e em Seu infinito amor. Vocês não conseguirão desonrar mais a Deus do que professando ser Seu discípulo ao passo que Dele se mantêm à distância."
+        <span class="fonte">— Ellen G. White, O Desejado de Todas as Nações, p. 344</span>
       </div>
 
       <div class="pergunta-box">
-        <strong>💬 Debate final (4 min)</strong>
-        "A lição de comunidade diz: 'Vivemos conectados a tudo, menos a Deus. Falamos muito e oramos pouco. Nossos dedos se cansam antes dos nossos joelhos.' Você se identifica? O que essa frase revela sobre as prioridades da geração de hoje?"
-      </div>
-
-      <div class="checklist">
-        <li>A oração não é um botão mágico que muda as circunstâncias — é o vínculo que liga um coração pecador ao Pai amoroso.</li>
-        <li>Quando nos ajoelhamos, o orgulho cede, a fé amadurece e a alma encontra descanso.</li>
-        <li>Deus não quer que Seus filhos O vejam como um chefe duro — mas como o melhor amigo, que deseja abençoar, confortar e encher de alegria.</li>
-        <li>Orar é mais do que falar; é respirar na presença de Deus — "orem sem cessar" (1Ts 5:17) significa viver com o coração em sintonia com o Eterno.</li>
+        <strong>💬 Debate final (3 min)</strong>
+        "Que dúvida ou medo você precisa entregar ao Senhor hoje — dizendo como o pai do jovem possesso: 'Ajuda-me na minha incredulidade'? Deus rejeita a indiferença, não a honestidade. Qual é a diferença entre os dois?"
       </div>
 
       <div class="dica">
         <strong>💡 Frase de impacto para encerrar o bloco</strong>
-        "O mundo não precisa apenas de cristãos que falem sobre Deus, mas que vivam em intimidade com Ele." — Use essa frase da lição de comunidade como um convite pessoal, não como acusação.
+        "Um dos maiores equívocos da vida cristã é imaginar que fé é o contrário de dúvida. Não é. Fé é o que fazemos com a dúvida." — A dúvida pode bater à porta, mas não precisa entrar e tomar conta da nossa casa.
       </div>
     </div>
   </div>
@@ -717,30 +713,35 @@
   <!-- ENCERRAMENTO -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge verde">46–50 min</span>
-      <span class="bloco-icone">⭕</span>
-      <span class="bloco-titulo">Encerramento — Oração em Círculo</span>
+      <span class="tempo-badge roxo">45–50 min</span>
+      <span class="bloco-icone">🙌</span>
+      <span class="bloco-titulo">Encerramento — "Ajuda-me na minha falta de fé"</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Feche esta aula sobre oração com o ato mais poderoso possível: orando juntos. Não como ritual de encerramento, mas como prática real do que foi estudado.
+        Feche conectando tudo ao versículo-chave. A oração mais honesta da semana não foi de um doutor da lei — foi de um pai desesperado que dizia ao mesmo tempo "eu creio" e "me ajude a crer mais." Essa é a oração que Deus responde.
       </p>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Oração em círculo — formato livre (4 min)</span>
-        <p>Peça que a turma forme um círculo (ou fique em silêncio onde estão). Explique a proposta:<br><br>
-        <strong style="color:#FFD600">Quem quiser, ora em voz alta uma frase curta — pode ser:</strong><br><br>
-        🙏 Um pedido genuíno que você tem carregado sozinho.<br>
-        🙏 Uma gratidão por uma resposta que Deus já deu (mesmo que diferente do esperado).<br>
-        🙏 Uma declaração de confiança mesmo sem entender o silêncio.<br><br>
-        Quem não quiser falar, pode permanecer em silêncio — o silêncio também é oração. O professor fecha com uma oração breve e abrangente.<br><br>
-        <em style="color:#aaa;">Não force participação. A presença em silêncio é tão válida quanto as palavras.</em></p>
+        <span class="tag">✦ Compromisso da semana — "Minha atitude de fé" (3 min)</span>
+        <p>Peça que cada jovem escolha mentalmente (ou escreva se quiser) uma resposta para cada pergunta:<br><br>
+        🔶 <strong style="color:#FFD600">Onde minha fé precisa virar ação esta semana?</strong><br>
+        ___ (ex: conversar com alguém, voltar à oração, pedir perdão, dar um passo numa decisão)<br><br>
+        🔶 <strong style="color:#FFD600">Qual sentimento tenho deixado comandar minha fé?</strong><br>
+        ___ (medo, dúvida, apatia, vergonha, desânimo)<br><br>
+        🔶 <strong style="color:#FFD600">O que vou fazer diferente nos próximos 7 dias?</strong><br>
+        ___ (hábito concreto, não intenção genérica)</p>
       </div>
 
       <div class="verso-box">
-        <span>Para encerrar</span>
-        Relembre a sondagem do início: "Vários de nós já sentiram que Deus estava em silêncio. Ana também sentiu. Mas ela não parou. E Deus não estava ausente — estava preparando algo muito maior do que ela imaginava. Que a nossa oração desta semana seja assim: persistente, honesta e confiante."
+        <span>Para encerrar em oração</span>
+        Convide a turma a orar em silêncio, usando as palavras de Marcos 9:24 como oração pessoal: <em>"Eu creio! Ajuda-me na minha falta de fé."</em> Simples, honesta, e exatamente o que Jesus respondeu com um milagre.
+      </div>
+
+      <div class="dica">
+        <strong>💡 Retome o quebra-gelo do início</strong>
+        Feche perguntando: "Lembra da nota que você deu para o seu 'Wi-Fé' no começo da aula? Depois de tudo que estudamos — você mudaria a nota? O que mudaria na sua conexão?" — Cria um arco narrativo completo e termina com propósito.
       </div>
     </div>
   </div>
@@ -749,22 +750,22 @@
   <p class="section-title">Perguntas Extras se Sobrar Tempo</p>
 
   <div class="pergunta-box">
-    <strong>➕ Bônus 1 — Do Hipertexto (quarta)</strong>
-    "A lição de quarta lista vários tipos de oração na Bíblia: confissão com lágrimas (Ed 10:1), súplica por livramento (2Rs 13:4), busca de entendimento (1Rs 3:6-9) e pedido da bênção de Deus (1Rs 8:22-54). Qual desses tipos você pratica mais? Qual você nunca tentou?"
+    <strong>➕ Bônus 1 — Sobre a fé "emprestada"</strong>
+    "A lição de segunda diz que alguns tentam 'tomar fé emprestada' de outros — como as virgens imprudentes que pediram óleo às amigas (Mt 25:8). Por que a fé não pode ser emprestada? O que isso exige de cada um individualmente?"
   </div>
   <div class="pergunta-box">
-    <strong>➕ Bônus 2 — Sobre barreiras</strong>
-    "A lição de terça lista práticas que ajudam quando sentimos que Deus não responde: buscar Sua vontade, examinar motivações, verificar pecados acariciados, manter coração humilde, perseverar. Qual dessas é a mais difícil para você admitir?"
+    <strong>➕ Bônus 2 — Sobre a incredulidade como barreira</strong>
+    "A lição de quarta diz que 'a incredulidade não é apenas dúvida, mas uma barreira que impede a graça de agir.' Qual é a diferença entre dúvida honesta e incredulidade? Alguém consegue dar um exemplo concreto?"
   </div>
   <div class="pergunta-box">
     <strong>➕ Bônus 3 — Para os mais corajosos</strong>
-    "Você ora mais quando está em crise ou quando está bem? O que isso revela sobre como você vê sua relação com Deus — como um seguro para emergências ou como um relacionamento diário?"
+    "Paulo exortou: 'Examinem-se para ver se realmente estão na fé' (2Co 13:5). Se você fizesse esse exame honesto agora — o que encontraria? O que você alimenta mais: a fé ou a incredulidade?"
   </div>
 
 </div>
 
 <footer>
-  Lição 7 · <strong>A Oração na Prática</strong> · 9–15 de Maio · 1 Samuel 1:1–28<br>
+  Lição 8 · <strong>Vivendo pela Fé</strong> · 16–22 de Maio · Marcos 9:14–29<br>
   Estrutura para recapitulação jovem · 50 minutos
 </footer>
 
