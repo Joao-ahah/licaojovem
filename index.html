@@ -442,6 +442,33 @@
     line-height: 1.8;
   }
 
+  /* BOTÃO QUIZ */
+  .quiz-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--laranja), var(--laranja-medio));
+    color: #fff;
+    padding: 16px 48px;
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--laranja);
+    cursor: pointer;
+    margin-bottom: 40px;
+  }
+  .quiz-btn:hover {
+    background: linear-gradient(135deg, var(--laranja-medio), var(--laranja));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(230, 81, 0, 0.3);
+  }
+  .quiz-btn:active {
+    transform: translateY(0);
+  }
+
   footer {
     text-align: center;
     padding: 32px 20px;
@@ -760,6 +787,11 @@
   <div class="pergunta-box">
     <strong>➕ Bônus 3 — Para os mais corajosos</strong>
     "Paulo exortou: 'Examinem-se para ver se realmente estão na fé' (2Co 13:5). Se você fizesse esse exame honesto agora — o que encontraria? O que você alimenta mais: a fé ou a incredulidade?"
+  </div>
+
+  <!-- BOTÃO QUIZ -->
+  <div style="text-align: center;">
+    <a href="quiz.html" class="quiz-btn">➤ Ir para o Quiz</a>
   </div>
 
 </div>

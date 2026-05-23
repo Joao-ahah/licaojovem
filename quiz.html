@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz · Lição 8 · Vivendo pela Fé</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #0d1b3e;
+    --deep:       #07122b;
+    --indigo:     #1a237e;
+    --blue:       #283593;
+    --gold:       #c9a84c;
+    --gold-lt:    #f0d080;
+    --silver:     #b0b8cc;
+    --white:      #f0eee8;
+    --correct:    #2e7d32;
+    --wrong:      #7b0000;
+    --correct-lt: #a5d6a7;
+    --wrong-lt:   #ef9a9a;
+    --violet:     #512da8;
+    --borda:      rgba(255,255,255,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: var(--deep);
+    color: var(--white);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* BG */
+  .bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 20%, rgba(26,35,126,.5) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 85% 80%, rgba(61,32,102,.4) 0%, transparent 70%),
+      linear-gradient(160deg, #07122b 0%, #0d1b3e 45%, #130d30 100%);
+  }
+
+  /* CROSS WATERMARK */
+  .cross-wm {
+    position: fixed; bottom: -30px; right: -30px;
+    font-size: 260px; color: #c9a84c;
+    opacity: .04; z-index: 0; pointer-events: none;
+    line-height: 1; user-select: none;
+  }
+
+  /* SHELL */
+  .shell {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+
+  /* ── TOP BAR ── */
+  .top-bar {
+    padding: 18px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--borda);
+    background: rgba(7,18,43,.6);
+    backdrop-filter: blur(10px);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .top-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: .5px;
+  }
+  .top-brand span { color: var(--silver); font-size: 12px; font-weight: 300; letter-spacing: 1px; }
+
+  /* progress */
+  .prog-wrap {
+    flex: 1; margin: 0 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .prog-bar {
+    flex: 1; height: 5px;
+    background: rgba(255,255,255,.1);
+    border-radius: 100px; overflow: hidden;
+  }
+  .prog-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--indigo), var(--gold));
+    border-radius: 100px;
+    transition: width .5s ease;
+    width: 0%;
+  }
+  .prog-label {
+    font-size: 12px; color: var(--silver);
+    white-space: nowrap; letter-spacing: .5px;
+  }
+  .score-pill {
+    background: rgba(201,168,76,.12);
+    border: 1px solid rgba(201,168,76,.3);
+    padding: 5px 14px; border-radius: 100px;
+    font-size: 13px; color: var(--gold);
+    font-weight: 700; white-space: nowrap;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 20px 80px;
+  }
+
+  /* ── SCREEN ── */
+  .screen {
+    display: none;
+    width: 100%; max-width: 700px;
+    animation: slideIn .45s cubic-bezier(.22,1,.36,1);
+  }
+  .screen.active { display: block; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-20px); }
+  }
+  .screen.leaving {
+    display: block;
+    animation: slideOut .3s ease forwards;
+  }
+
+  /* ── START SCREEN ── */
+  .start-card {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .start-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,.1);
+    border: 1px solid rgba(201,168,76,.3);
+    padding: 6px 18px; border-radius: 100px;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+  }
+  .start-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 7vw, 4.2rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--white); margin-bottom: 10px;
+    text-shadow: 0 2px 30px rgba(201,168,76,.2);
+  }
+  .start-card h1 em { font-style: normal; color: var(--gold); }
+  .start-sub {
+    color: var(--silver); font-size: 13px;
+    letter-spacing: 1px; margin-bottom: 32px;
+  }
+  .verse-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(201,168,76,.2);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 24px; text-align: left;
+    margin-bottom: 36px;
+  }
+  .verse-card .ref {
+    color: var(--gold); font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 8px; display: block;
+  }
+  .verse-card p {
+    font-style: italic; font-size: 15px;
+    color: #d0ccc0; line-height: 1.7;
+  }
+  .info-row {
+    display: flex; justify-content: center; gap: 24px;
+    flex-wrap: wrap; margin-bottom: 40px;
+  }
+  .info-chip {
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--borda);
+    padding: 8px 18px; border-radius: 8px;
+    font-size: 13px; color: var(--silver);
+  }
+  .info-chip strong { color: var(--gold); }
+
+  /* ── QUESTION CARD ── */
+  .q-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    padding: clamp(24px, 5vw, 40px);
+    position: relative; overflow: hidden;
+  }
+  .q-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,.5), transparent);
+  }
+
+  .q-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 18px;
+  }
+  .q-num-badge {
+    background: var(--gold);
+    color: #07122b;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 900;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .q-type-tag {
+    background: rgba(201,168,76,.12);
+    border: 1px solid rgba(201,168,76,.25);
+    padding: 3px 12px; border-radius: 100px;
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold);
+  }
+
+  .q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2.8vw, 20px);
+    font-weight: 400; line-height: 1.65;
+    color: var(--white); margin-bottom: 28px;
+  }
+  .q-text em { font-style: italic; color: var(--gold-lt); }
+
+  /* OPTIONS */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .opt-btn {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px; padding: 14px 18px;
+    cursor: pointer; text-align: left;
+    color: #c8c4bc;
+    font-family: 'Lato', sans-serif;
+    font-size: 14.5px; font-weight: 300; line-height: 1.6;
+    transition: background .2s, border-color .2s, transform .15s;
+    width: 100%;
+  }
+  .opt-btn:hover:not(:disabled) {
+    background: rgba(201,168,76,.1);
+    border-color: rgba(201,168,76,.35);
+    transform: translateX(4px);
+    color: var(--white);
+  }
+  .opt-letter {
+    min-width: 30px; height: 30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--gold); flex-shrink: 0; margin-top: 1px;
+    transition: background .2s, color .2s;
+  }
+  .opt-btn.correct { background: rgba(46,125,50,.2); border-color: #4caf50; color: var(--correct-lt); }
+  .opt-btn.correct .opt-letter { background: #2e7d32; border-color: #4caf50; color: #fff; }
+  .opt-btn.wrong   { background: rgba(123,0,0,.2);  border-color: #ef5350; color: var(--wrong-lt); }
+  .opt-btn.wrong   .opt-letter { background: #7b0000; border-color: #ef5350; color: #fff; }
+  .opt-btn:disabled { cursor: default; }
+
+  /* TF */
+  .tf-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tf-btn {
+    padding: 20px 10px; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.05);
+    color: var(--silver);
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 700;
+    cursor: pointer;
+    transition: all .2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .tf-btn:hover:not(:disabled) {
+    background: rgba(201,168,76,.1);
+    border-color: rgba(201,168,76,.3);
+    color: var(--white); transform: scale(1.03);
+  }
+  .tf-btn.correct { background: rgba(46,125,50,.2); border-color: #4caf50; color: var(--correct-lt); }
+  .tf-btn.wrong   { background: rgba(123,0,0,.2);  border-color: #ef5350; color: var(--wrong-lt); }
+  .tf-btn:disabled { cursor: default; }
+
+  /* FEEDBACK */
+  .feedback {
+    display: none; margin-top: 18px;
+    padding: 14px 18px; border-radius: 10px;
+    font-size: 14px; line-height: 1.75; color: #ccc;
+    background: rgba(0,0,0,.35);
+    border-left: 3px solid var(--gold);
+    animation: fadeUp .4s ease;
+  }
+  .feedback.show { display: block; }
+  .feedback strong { color: var(--gold-lt); font-weight: 700; }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(-8px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* NEXT BTN */
+  .next-wrap {
+    display: none; margin-top: 24px; text-align: right;
+  }
+  .next-wrap.show { display: block; }
+  .btn-next {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, var(--indigo), var(--violet));
+    border: 1px solid rgba(201,168,76,.3);
+    color: var(--white); padding: 13px 32px;
+    border-radius: 100px;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; transition: all .2s;
+  }
+  .btn-next:hover {
+    box-shadow: 0 0 30px rgba(201,168,76,.2);
+    transform: translateY(-2px);
+  }
+  .btn-next .arrow { font-size: 18px; }
+
+  /* ── RESULT ── */
+  .result-card {
+    text-align: center; padding: 20px 0;
+  }
+  .result-cross { font-size: 56px; margin-bottom: 20px; display: block; }
+  .result-score {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 5.5rem);
+    font-weight: 900; color: var(--gold); line-height: 1;
+    margin-bottom: 6px;
+  }
+  .result-total { font-size: 13px; color: var(--silver); letter-spacing: 2px; margin-bottom: 28px; }
+  .medals { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+  .medal {
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--borda);
+    border-radius: 12px; padding: 14px 20px; text-align: center;
+    min-width: 90px;
+  }
+  .medal .mv {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: var(--gold); display: block;
+  }
+  .medal span { font-size: 11px; color: var(--silver); letter-spacing: 1px; }
+  .result-msg {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(17px, 3vw, 22px);
+    color: var(--white); line-height: 1.6;
+    max-width: 480px; margin: 0 auto 20px;
+  }
+  .result-verse-box {
+    display: inline-block;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(201,168,76,.2);
+    border-radius: 10px; padding: 16px 24px;
+    font-style: italic; color: var(--silver);
+    font-size: 14px; margin-bottom: 36px;
+    max-width: 460px;
+  }
+  .result-verse-box .rv-ref {
+    display: block; font-style: normal;
+    color: var(--gold); font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 6px; font-weight: 700;
+  }
+  .btn-restart {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, var(--indigo), var(--violet));
+    border: 1px solid rgba(201,168,76,.3);
+    color: var(--white); padding: 14px 38px;
+    border-radius: 100px; font-family: 'Lato', sans-serif;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; transition: all .2s;
+  }
+  .btn-restart:hover {
+    box-shadow: 0 0 30px rgba(201,168,76,.2);
+    transform: translateY(-2px);
+  }
+
+  /* START BTN */
+  .btn-start {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: linear-gradient(135deg, var(--indigo), var(--violet));
+    border: 1px solid rgba(201,168,76,.35);
+    color: var(--white); padding: 16px 48px;
+    border-radius: 100px; font-family: 'Lato', sans-serif;
+    font-size: 14px; letter-spacing: 3px; text-transform: uppercase;
+    cursor: pointer; transition: all .25s;
+    box-shadow: 0 8px 32px rgba(26,35,126,.4);
+  }
+  .btn-start:hover {
+    box-shadow: 0 8px 40px rgba(201,168,76,.25);
+    transform: translateY(-3px) scale(1.01);
+  }
+
+  @media(max-width:520px){
+    .top-bar { padding: 14px 16px; }
+    .top-brand span { display: none; }
+    .prog-wrap { margin: 0 12px; }
+    .q-card { padding: 20px 16px; }
+    .tf-group { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="cross-wm">✝</div>
+
+<div class="shell">
+
+  <!-- TOP BAR -->
+  <div class="top-bar" id="topBar" style="display:none">
+    <div class="top-brand">Vivendo pela Fé <span>· Lição 8</span></div>
+    <div class="prog-wrap">
+      <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+      <div class="prog-label" id="progLabel">0 / 11</div>
+    </div>
+    <div class="score-pill" id="scorePill">0 pts</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- ══ START ══ -->
+    <div class="screen active" id="s0">
+      <div class="start-card">
+        <div class="start-badge">✝ Escola Sabatina Adultos · 2º Trimestre 2026</div>
+        <h1>Vivendo<br>pela <em>Fé</em></h1>
+        <p class="start-sub">Lição 8 · 16 a 22 de Maio · Mc 9:14–29 · Hb 11 · Ap 14:12</p>
+        <div class="verse-card">
+          <span class="ref">Verso para memorizar · Hb 11:1</span>
+          <p>"Ora, a fé é a certeza de coisas que se esperam, a convicção de fatos que não se veem."</p>
+        </div>
+        <div class="info-row">
+          <div class="info-chip"><strong>11</strong> Perguntas</div>
+          <div class="info-chip"><strong>6</strong> Múltipla Escolha</div>
+          <div class="info-chip"><strong>4</strong> V ou F</div>
+          <div class="info-chip"><strong>1</strong> Verso para Memorizar</div>
+        </div>
+        <button class="btn-start" onclick="startQuiz()">✦ &nbsp; Iniciar Quiz &nbsp; ✦</button>
+      </div>
+    </div>
+
+    <!-- ══ Q1 ══ -->
+    <div class="screen" id="s1">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">1</div>
+          <div class="q-type-tag">Múltipla Escolha</div>
+        </div>
+        <p class="q-text">Segundo Hebreus 11:1 — o único texto bíblico que define diretamente o que é fé — a fé é composta por dois elementos fundamentais. Qual das alternativas os descreve <em>corretamente</em>?</p>
+        <div class="options">
+          <button class="opt-btn" onclick="answer(this,1,false)"><span class="opt-letter">A</span>A certeza do passado e a esperança de recompensas presentes</button>
+          <button class="opt-btn" onclick="answer(this,1,true)"><span class="opt-letter">B</span>A certeza das coisas que se esperam e a convicção de fatos que não se veem</button>
+          <button class="opt-btn" onclick="answer(this,1,false)"><span class="opt-letter">C</span>A confiança em milagres visíveis e a obediência perfeita aos mandamentos</button>
+          <button class="opt-btn" onclick="answer(this,1,false)"><span class="opt-letter">D</span>O sentimento de paz interior e a segurança emocional da salvação</button>
+        </div>
+        <div class="feedback" id="fb1">
+          <strong>✓ Resposta correta: B.</strong> A lição explica que os dois elementos de Hb 11:1 apontam para dois eventos centrais: (1) "a certeza das coisas que se esperam" → o Advento e o reino de Deus; (2) "a convicção de fatos que não se veem" → a criação do mundo. A fé se ancora nesses dois eventos totalmente sob controle divino.
+        </div>
+        <div class="next-wrap" id="nw1"><button class="btn-next" onclick="goNext(2)">Próxima <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q2 ══ -->
+    <div class="screen" id="s2">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">2</div>
+          <div class="q-type-tag">Múltipla Escolha</div>
+        </div>
+        <p class="q-text">Quando os fariseus exigiram um sinal do céu em Marcos 8:11-12, Ellen G. White afirma que aqueles sinais <em>não eram</em> o que os judeus realmente necessitavam. Qual era a sua real necessidade?</p>
+        <div class="options">
+          <button class="opt-btn" onclick="answer(this,2,false)"><span class="opt-letter">A</span>Mais provas intelectuais e filosóficas da existência de Deus</button>
+          <button class="opt-btn" onclick="answer(this,2,false)"><span class="opt-letter">B</span>Uma libertação política e militar do domínio romano</button>
+          <button class="opt-btn" onclick="answer(this,2,true)"><span class="opt-letter">C</span>Renovação espiritual — não iluminação intelectual meramente externa</button>
+          <button class="opt-btn" onclick="answer(this,2,false)"><span class="opt-letter">D</span>Novos líderes religiosos mais capazes de interpretar a lei mosaica</button>
+        </div>
+        <div class="feedback" id="fb2">
+          <strong>✓ Resposta correta: C.</strong> Ellen G. White escreveu em <em>O Desejado de Todas as Nações</em> (p. 321): "A necessidade deles não era de iluminação intelectual, mas de renovação espiritual." O mesmo vale para nós hoje — não precisamos de mais sinais, mas de uma caminhada autêntica e real com Deus.
+        </div>
+        <div class="next-wrap" id="nw2"><button class="btn-next" onclick="goNext(3)">Próxima <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q3 ══ -->
+    <div class="screen" id="s3">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">3</div>
+          <div class="q-type-tag">Múltipla Escolha</div>
+        </div>
+        <p class="q-text">O verbo hebraico <em>he'emin</em> usado em Gênesis 15:6 — "E [Abraão] creu no Senhor, e isso lhe foi imputado como justiça" — deriva da raiz <em>'aman</em>. O que esse termo revela sobre a natureza da fé de Abraão?</p>
+        <div class="options">
+          <button class="opt-btn" onclick="answer(this,3,false)"><span class="opt-letter">A</span>Obediência cega, sem questionamentos ou diálogo com Deus</button>
+          <button class="opt-btn" onclick="answer(this,3,false)"><span class="opt-letter">B</span>Um sentimento intenso de proximidade emocional com o Criador</button>
+          <button class="opt-btn" onclick="answer(this,3,true)"><span class="opt-letter">C</span>"Firme" e "confiável" — uma confiança relacional, histórica e comprometida</button>
+          <button class="opt-btn" onclick="answer(this,3,false)"><span class="opt-letter">D</span>O acúmulo de obras de justiça suficientes para ser aceito por Deus</button>
+        </div>
+        <div class="feedback" id="fb3">
+          <strong>✓ Resposta correta: C.</strong> O auxiliar do professor explica que <em>he'emin</em> descreve muito mais do que um processo sentimental ou intelectual. O que torna Abraão justo não é a soma de suas ações, "mas sua disposição de confiar nas ações de Deus em favor dele" (Rm 4:24). Fé é confiança relacional — não performance religiosa.
+        </div>
+        <div class="next-wrap" id="nw3"><button class="btn-next" onclick="goNext(4)">Próxima <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q4 ══ -->
+    <div class="screen" id="s4">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">4</div>
+          <div class="q-type-tag">Múltipla Escolha</div>
+        </div>
+        <p class="q-text">Jesus comparou a fé dos discípulos (Mc 4:40) com a da mulher cananeia (Mt 15:21-28). Qual foi o diagnóstico para os discípulos e o elogio para a mulher?</p>
+        <div class="options">
+          <button class="opt-btn" onclick="answer(this,4,false)"><span class="opt-letter">A</span>Os discípulos tinham "grande fé"; a mulher tinha "pouca fé", mas persistência admirável</button>
+          <button class="opt-btn" onclick="answer(this,4,true)"><span class="opt-letter">B</span>Aos discípulos, Jesus apontou medo e ausência de fé; à mulher, elogiou a fé grande, perseverante e confiante</button>
+          <button class="opt-btn" onclick="answer(this,4,false)"><span class="opt-letter">C</span>Ambos demonstraram fé equivalente — Jesus apenas testou a humildade da mulher</button>
+          <button class="opt-btn" onclick="answer(this,4,false)"><span class="opt-letter">D</span>Os discípulos oraram com fé; a mulher demonstrou apenas teimosia cultural</button>
+        </div>
+        <div class="feedback" id="fb4">
+          <strong>✓ Resposta correta: B.</strong> Só o fato de seguirmos a Jesus não garante fé forte automaticamente (Jo 2:23-25). Jesus discernia o que havia no coração. A mulher cananeia, mesmo sendo estrangeira, demonstrou uma fé que Jesus declarou ser "grande" — perseverante mesmo diante do aparente silêncio.
+        </div>
+        <div class="next-wrap" id="nw4"><button class="btn-next" onclick="goNext(5)">Próxima <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q5 ══ -->
+    <div class="screen" id="s5">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">5</div>
+          <div class="q-type-tag">Múltipla Escolha</div>
+        </div>
+        <p class="q-text">Apocalipse 14:12 descreve o povo de Deus no tempo do fim como aqueles que "guardam os mandamentos de Deus e a fé de Jesus". O que significa especificamente ter <em>a fé de Jesus</em>?</p>
+        <div class="options">
+          <button class="opt-btn" onclick="answer(this,5,false)"><span class="opt-letter">A</span>Guardar os mandamentos de forma perfeita e sem falhas até o fim dos tempos</button>
+          <button class="opt-btn" onclick="answer(this,5,false)"><span class="opt-letter">B</span>Apenas crer na doutrina da segunda vinda e do juízo investigativo adventista</button>
+          <button class="opt-btn" onclick="answer(this,5,true)"><span class="opt-letter">C</span>Ter Jesus habitando em nós — Sua fé em nosso coração — numa experiência diária ativa e viva com Ele</button>
+          <button class="opt-btn" onclick="answer(this,5,false)"><span class="opt-letter">D</span>Imitar externamente os comportamentos de Jesus sem necessitar de experiência pessoal</button>
+        </div>
+        <div class="feedback" id="fb5">
+          <strong>✓ Resposta correta: C.</strong> A lição de quinta esclarece: ter a fé de Jesus é "ter Jesus habitando em nós e, assim, Sua fé em nosso coração, pois Cristo é o verdadeiro fundamento de nossa fé." No Getsêmani, essa fé se revelou em rendição total: oração insistente, confiança no Pai e submissão à Sua vontade — mesmo diante do cálice do sofrimento.
+        </div>
+        <div class="next-wrap" id="nw5"><button class="btn-next" onclick="goNext(6)">Próxima <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q6 ══ -->
+    <div class="screen" id="s6">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">6</div>
+          <div class="q-type-tag">Múltipla Escolha</div>
+        </div>
+        <p class="q-text">O "Auxiliar do Professor" apresenta três princípios do <em>treinamento da fé</em> com base em Mateus 15:21-28. O que instrui especificamente o <em>"Princípio 2"</em>?</p>
+        <div class="options">
+          <button class="opt-btn" onclick="answer(this,6,false)"><span class="opt-letter">A</span>Buscar sinais e confirmações sobrenaturais antes de agir com fé</button>
+          <button class="opt-btn" onclick="answer(this,6,true)"><span class="opt-letter">B</span>Parar de se preocupar com o "status" da sua fé ou situação atual — simplesmente seguir em frente, confiando em Deus</button>
+          <button class="opt-btn" onclick="answer(this,6,false)"><span class="opt-letter">C</span>Compartilhar publicamente seu testemunho de fé toda semana na congregação</button>
+          <button class="opt-btn" onclick="answer(this,6,false)"><span class="opt-letter">D</span>Jejuar três vezes por semana para fortalecer a experiência espiritual da fé</button>
+        </div>
+        <div class="feedback" id="fb6">
+          <strong>✓ Resposta correta: B.</strong> O Princípio 2 diz: "Pare de se preocupar com o 'status' da sua fé ou com sua situação atual. Simplesmente siga em frente, confiando em Deus." O Princípio 1 é orar e se comportar como se Deus já tivesse respondido; o Princípio 3 é aprender a obedecer mesmo quando isso traz dificuldades.
+        </div>
+        <div class="next-wrap" id="nw6"><button class="btn-next" onclick="goNext(7)">Próxima <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q7 — VF ══ -->
+    <div class="screen" id="s7">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">7</div>
+          <div class="q-type-tag">Verdadeiro ou Falso</div>
+        </div>
+        <p class="q-text">Ellen G. White afirma em <em>Primeiros Escritos</em> que "sentimento é fé" e que o crente deve esperar sentir emoções intensas antes de exercitar a fé.</p>
+        <div class="tf-group">
+          <button class="tf-btn" onclick="answerTF(this,7,false)">✓ Verdadeiro</button>
+          <button class="tf-btn" onclick="answerTF(this,7,true)">✗ Falso</button>
+        </div>
+        <div class="feedback" id="fb7">
+          <strong>FALSO.</strong> Ellen G. White escreveu exatamente o oposto: <em>"Sentimento não é fé [...]. Cabe a nós exercitar a fé; mas aquele sentimento de alegria e bênçãos, Deus é quem os dá"</em> (Primeiros Escritos, p. 86). A fé precede o sentimento — não é produto dele. Esperar sentir para crer é confundir causa e efeito na vida espiritual.
+        </div>
+        <div class="next-wrap" id="nw7"><button class="btn-next" onclick="goNext(8)">Próxima <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q8 — VF ══ -->
+    <div class="screen" id="s8">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">8</div>
+          <div class="q-type-tag">Verdadeiro ou Falso</div>
+        </div>
+        <p class="q-text">Segundo a lição, fé e dúvida podem coexistir na mesma pessoa ao mesmo tempo — como demonstrado pela declaração do pai do jovem possesso em Marcos 9:24: <em>"Eu creio! Ajude-me na minha falta de fé."</em></p>
+        <div class="tf-group">
+          <button class="tf-btn" onclick="answerTF(this,8,true)">✓ Verdadeiro</button>
+          <button class="tf-btn" onclick="answerTF(this,8,false)">✗ Falso</button>
+        </div>
+        <div class="feedback" id="fb8">
+          <strong>VERDADEIRO.</strong> A lição afirma: "Fé e dúvida podem existir juntas (Mc 9:24). Não se afaste de Deus só porque tem questionamentos." Jesus respondeu positivamente ao pai que confessava crença e incredulidade ao mesmo tempo. Deus rejeita a indiferença — não a honestidade.
+        </div>
+        <div class="next-wrap" id="nw8"><button class="btn-next" onclick="goNext(9)">Próxima <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q9 — VF ══ -->
+    <div class="screen" id="s9">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">9</div>
+          <div class="q-type-tag">Verdadeiro ou Falso</div>
+        </div>
+        <p class="q-text">A lição de domingo afirma que seria mais difícil crer hoje do que foi para os israelitas no tempo bíblico, pois eles testemunharam milagres diretamente enquanto nós apenas lemos sobre eles.</p>
+        <div class="tf-group">
+          <button class="tf-btn" onclick="answerTF(this,9,false)">✓ Verdadeiro</button>
+          <button class="tf-btn" onclick="answerTF(this,9,true)">✗ Falso</button>
+        </div>
+        <div class="feedback" id="fb9">
+          <strong>FALSO.</strong> A lição argumenta o contrário: os israelitas não tinham Bíblia completa nem 6 mil anos de história bíblica. Nós contamos com muito mais evidências para crer. O segredo é "focar no que fortalece a fé, não no que a enfraquece" — não buscar mais sinais, mas usar a luz que já temos.
+        </div>
+        <div class="next-wrap" id="nw9"><button class="btn-next" onclick="goNext(10)">Próxima <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q10 — VF ══ -->
+    <div class="screen" id="s10">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">10</div>
+          <div class="q-type-tag">Verdadeiro ou Falso</div>
+        </div>
+        <p class="q-text">O nome "Adventista do Sétimo Dia" foi adotado pelos pioneiros concordando solenemente em guardar os mandamentos de Deus <em>e a fé de Jesus Cristo</em> — conforme registrado por J. Loughborough em <em>O Grande Movimento Adventista</em>.</p>
+        <div class="tf-group">
+          <button class="tf-btn" onclick="answerTF(this,10,true)">✓ Verdadeiro</button>
+          <button class="tf-btn" onclick="answerTF(this,10,false)">✗ Falso</button>
+        </div>
+        <div class="feedback" id="fb10">
+          <strong>VERDADEIRO.</strong> O auxiliar cita: "Nós, abaixo-assinados, nos associamos como uma igreja, escolhendo o nome de Adventistas do Sétimo Dia, concordando solenemente em guardar os mandamentos de Deus <em>e a fé de Jesus Cristo</em>" (Loughborough, p. 352). A fé de Jesus está no DNA histórico e teológico da denominação.
+        </div>
+        <div class="next-wrap" id="nw10"><button class="btn-next" onclick="goNext(11)">Última Pergunta <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ Q11 — VERSO ══ -->
+    <div class="screen" id="s11">
+      <div class="q-card">
+        <div class="q-meta">
+          <div class="q-num-badge">11</div>
+          <div class="q-type-tag">Verso para Memorizar</div>
+        </div>
+        <p class="q-text">Qual é o <em>verso para memorizar</em> da Lição 8 — "Vivendo pela Fé" — e em qual livro, capítulo e versículo ele se encontra?</p>
+        <div class="options">
+          <button class="opt-btn" onclick="answer(this,11,false)"><span class="opt-letter">A</span>"Porque pela graça sois salvos, mediante a fé; e isso não vem de vós; é dom de Deus." — Efésios 2:8</button>
+          <button class="opt-btn" onclick="answer(this,11,true)"><span class="opt-letter">B</span>"Ora, a fé é a certeza de coisas que se esperam, a convicção de fatos que não se veem." — Hebreus 11:1</button>
+          <button class="opt-btn" onclick="answer(this,11,false)"><span class="opt-letter">C</span>"O justo viverá pela fé." — Romanos 1:17</button>
+          <button class="opt-btn" onclick="answer(this,11,false)"><span class="opt-letter">D</span>"Sem fé é impossível agradar a Deus." — Hebreus 11:6</button>
+        </div>
+        <div class="feedback" id="fb11">
+          <strong>✓ Resposta correta: B — Hebreus 11:1.</strong> Este é o único texto bíblico que fornece uma definição direta de fé, apresentando seus dois elementos: (1) certeza das coisas esperadas → aponta para o Advento; (2) convicção de fatos não vistos → aponta para a criação. É o fundamento teológico de toda a lição desta semana.
+        </div>
+        <div class="next-wrap" id="nw11"><button class="btn-next" onclick="goNext(12)">Ver Resultado <span class="arrow">→</span></button></div>
+      </div>
+    </div>
+
+    <!-- ══ RESULT ══ -->
+    <div class="screen" id="s12">
+      <div class="result-card">
+        <span class="result-cross">✝</span>
+        <div class="result-score" id="finalScore">0</div>
+        <div class="result-total">de 11 pontos</div>
+        <div class="medals" id="medals"></div>
+        <p class="result-msg" id="resultMsg"></p>
+        <div class="result-verse-box" id="resultVerse"></div>
+        <button class="btn-restart" onclick="location.reload()">↺ &nbsp; Tentar Novamente</button>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /shell -->
+
+<script>
+  const TOTAL = 11;
+  let score = 0, answered = 0, current = 0;
+
+  function startQuiz() {
+    document.getElementById('topBar').style.display = 'flex';
+    goNext(1);
+  }
+
+  function goNext(n) {
+    const prev = document.getElementById('s' + current);
+    if (prev) {
+      prev.classList.add('leaving');
+      setTimeout(() => {
+        prev.classList.remove('active','leaving');
+        showScreen(n);
+      }, 280);
+    } else {
+      showScreen(n);
+    }
+  }
+
+  function showScreen(n) {
+    current = n;
+    const el = document.getElementById('s' + n);
+    if (el) { el.classList.add('active'); el.scrollIntoView({behavior:'smooth',block:'start'}); }
+    updateBar();
+    if (n === 12) renderResult();
+  }
+
+  function updateBar() {
+    const pct = Math.min(answered / TOTAL * 100, 100);
+    document.getElementById('progFill').style.width = pct + '%';
+    document.getElementById('progLabel').textContent = answered + ' / ' + TOTAL;
+    document.getElementById('scorePill').textContent = score + ' pts';
+  }
+
+  function disableCard(qNum) {
+    const card = document.getElementById('s' + qNum);
+    card.querySelectorAll('button.opt-btn, button.tf-btn').forEach(b => b.disabled = true);
+  }
+
+  function answer(btn, qNum, isCorrect) {
+    disableCard(qNum);
+    document.getElementById('fb' + qNum).classList.add('show');
+    if (isCorrect) { btn.classList.add('correct'); score++; }
+    else {
+      btn.classList.add('wrong');
+      const card = document.getElementById('s' + qNum);
+      card.querySelectorAll('.opt-btn').forEach(b => {
+        const fn = b.getAttribute('onclick') || '';
+        if (fn.includes(',true)')) b.classList.add('correct');
+      });
+    }
+    answered++;
+    updateBar();
+    document.getElementById('nw' + qNum).classList.add('show');
+  }
+
+  function answerTF(btn, qNum, isCorrect) {
+    disableCard(qNum);
+    document.getElementById('fb' + qNum).classList.add('show');
+    if (isCorrect) { btn.classList.add('correct'); score++; }
+    else {
+      btn.classList.add('wrong');
+      const sib = btn.parentElement.querySelector('.tf-btn:not(.wrong)');
+      if (sib) sib.classList.add('correct');
+    }
+    answered++;
+    updateBar();
+    document.getElementById('nw' + qNum).classList.add('show');
+  }
+
+  function renderResult() {
+    document.getElementById('topBar').style.display = 'none';
+    document.getElementById('finalScore').textContent = score;
+    const pct = score / TOTAL;
+    let msg, ref, txt;
+    if (pct === 1)      { msg = '🏆 Perfeito! Você dominou completamente a Lição 8. Que sua fé seja tão viva quanto seu conhecimento!'; ref = 'Hebreus 11:6'; txt = '"Sem fé é impossível agradar a Deus."'; }
+    else if (pct >= .8) { msg = '⭐ Excelente! Você demonstrou profundo domínio do conteúdo. Continue crescendo em sabedoria e fé!'; ref = 'Marcos 9:24'; txt = '"Eu creio! Ajude-me na minha falta de fé!"'; }
+    else if (pct >= .6) { msg = '📖 Bom resultado! Revise os pontos em que errou e aprofunde seu estudo da lição desta semana.'; ref = 'Romanos 10:17'; txt = '"A fé vem pelo ouvir, e o ouvir pela Palavra de Deus."'; }
+    else                { msg = '🌱 A fé começa pequena — como um grão de mostarda. Releia a lição e tente novamente!'; ref = 'Mateus 17:20'; txt = '"Se tiverdes fé como um grão de mostarda, nada vos será impossível."'; }
+    document.getElementById('resultMsg').textContent = msg;
+    document.getElementById('resultVerse').innerHTML = '<span class="rv-ref">' + ref + '</span>' + txt;
+    document.getElementById('medals').innerHTML =
+      `<div class="medal"><span class="mv">${score}</span><span>Certas</span></div>
+       <div class="medal"><span class="mv">${TOTAL-score}</span><span>Erradas</span></div>
+       <div class="medal"><span class="mv">${Math.round(pct*100)}%</span><span>Aproveit.</span></div>`;
+  }
+</script>
+</body>
+</html>
