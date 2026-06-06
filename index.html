@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lição 8 — Vivendo pela Fé</title>
+<title>Lição 10 — Arrependimento e Perdão</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
   :root {
-    --laranja: #E65100;
-    --laranja-claro: #FF8A65;
-    --laranja-medio: #F4511E;
-    --preto: #0D0D0D;
-    --branco: #F5F5F0;
-    --destaque: #FFD600;
-    --card-bg: #111110;
-    --borda: #272720;
-    --roxo: #4A148C;
-    --roxo-claro: #CE93D8;
-    --verde: #1B5E20;
-    --verde-claro: #66BB6A;
-    --azul: #0d47a1;
-    --vermelho: #7B0000;
-    --teal: #004D40;
+    --azul:      #1565C0;
+    --azul-claro:#42A5F5;
+    --teal:      #00695C;
+    --teal-claro:#4DB6AC;
+    --preto:     #0D0D0D;
+    --branco:    #F5F5F0;
+    --destaque:  #FFD600;
+    --card-bg:   #111214;
+    --borda:     #252830;
+    --roxo:      #4A148C;
+    --roxo-claro:#CE93D8;
+    --verde:     #1B5E20;
+    --verde-claro:#66BB6A;
+    --vermelho:  #7B0000;
+    --amarelo:   #7B5800;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,32 +37,32 @@
 
   /* HERO */
   .hero {
-    background: linear-gradient(135deg, #0a0a08 0%, #2e1500 100%);
+    background: linear-gradient(135deg, #08080a 0%, #0a1e14 60%, #050e1a 100%);
     padding: 56px 32px 48px;
     text-align: center;
-    border-bottom: 3px solid var(--laranja-claro);
+    border-bottom: 3px solid var(--teal-claro);
     position: relative;
     overflow: hidden;
   }
   .hero::before {
     content: '';
     position: absolute;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(230,81,0,0.12) 0%, transparent 70%);
-    top: -150px; right: -100px;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(0,105,92,0.12) 0%, transparent 70%);
+    top: -140px; right: -80px;
     pointer-events: none;
   }
   .hero::after {
     content: '';
     position: absolute;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(255,138,101,0.07) 0%, transparent 70%);
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(21,101,192,0.08) 0%, transparent 70%);
     bottom: -60px; left: -40px;
     pointer-events: none;
   }
   .licao-badge {
     display: inline-block;
-    background: var(--laranja);
+    background: var(--teal);
     color: #fff;
     font-family: 'Syne', sans-serif;
     font-size: 11px;
@@ -74,65 +74,34 @@
   }
   .hero h1 {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-size: clamp(1.9rem, 5.5vw, 3.6rem);
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 12px;
+    color: var(--branco);
   }
-  .hero h1 span { color: var(--laranja-claro); }
-  .hero p {
-    color: #aaa;
-    font-size: 15px;
-    max-width: 480px;
-    margin: 0 auto 28px;
-  }
-  .meta-row {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
+  .hero h1 span { color: var(--teal-claro); }
+  .hero p { color: #aaa; font-size: 15px; max-width: 480px; margin: 0 auto 28px; }
+  .meta-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
   .meta-pill {
     background: rgba(255,255,255,0.06);
     border: 1px solid var(--borda);
-    padding: 8px 20px;
-    border-radius: 100px;
-    font-size: 13px;
-    color: #ccc;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    padding: 8px 20px; border-radius: 100px;
+    font-size: 13px; color: #ccc;
+    display: flex; align-items: center; gap: 8px;
   }
-  .meta-pill .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--laranja-claro);
-    display: inline-block;
-  }
+  .meta-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal-claro); display: inline-block; }
 
-  .container {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
-  }
+  .container { max-width: 780px; margin: 0 auto; padding: 0 20px 80px; }
 
   .section-title {
     font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--laranja-claro);
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--teal-claro);
     margin: 60px 0 28px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex; align-items: center; gap: 12px;
   }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--borda);
-  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--borda); }
 
   /* BLOCO */
   .bloco {
@@ -143,342 +112,174 @@
     overflow: hidden;
     transition: border-color 0.2s;
   }
-  .bloco:hover { border-color: var(--laranja); }
+  .bloco:hover { border-color: var(--teal); }
 
   .bloco-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 20px 24px;
-    cursor: pointer;
-    user-select: none;
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px 24px; cursor: pointer; user-select: none;
   }
   .tempo-badge {
-    background: var(--laranja);
+    background: var(--teal);
     color: #fff;
     font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 5px 12px;
-    border-radius: 6px;
-    white-space: nowrap;
-    min-width: 68px;
-    text-align: center;
+    font-size: 12px; font-weight: 700;
+    padding: 5px 12px; border-radius: 6px;
+    white-space: nowrap; min-width: 68px; text-align: center;
   }
-  .tempo-badge.amarelo  { background: #7B5800; }
+  .tempo-badge.amarelo  { background: var(--amarelo); }
   .tempo-badge.azul     { background: var(--azul); }
   .tempo-badge.vermelho { background: var(--vermelho); }
-  .tempo-badge.teal     { background: var(--teal); }
   .tempo-badge.roxo     { background: var(--roxo); }
   .tempo-badge.verde    { background: var(--verde); }
 
-  .bloco-titulo {
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    flex: 1;
-    color: var(--branco);
-  }
-  .bloco-icone { font-size: 20px; opacity: 0.75; }
-  .arrow { font-size: 14px; color: #555; transition: transform 0.3s; }
+  .bloco-titulo { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; flex: 1; color: var(--branco); }
+  .bloco-icone  { font-size: 20px; opacity: 0.75; }
+  .arrow        { font-size: 14px; color: #555; transition: transform 0.3s; }
   .bloco.open .arrow { transform: rotate(180deg); }
 
-  .bloco-body {
-    display: none;
-    padding: 0 24px 24px;
-    border-top: 1px solid var(--borda);
-  }
+  .bloco-body { display: none; padding: 0 24px 24px; border-top: 1px solid var(--borda); }
   .bloco.open .bloco-body { display: block; }
 
-  .bloco-desc {
-    color: #bbb;
-    font-size: 14px;
-    margin-top: 16px;
-    margin-bottom: 20px;
-    line-height: 1.8;
-  }
+  .bloco-desc { color: #bbb; font-size: 14px; margin-top: 16px; margin-bottom: 20px; line-height: 1.8; }
 
   /* PERGUNTA */
   .pergunta-box {
-    background: rgba(230, 81, 0, 0.12);
-    border-left: 3px solid var(--laranja-claro);
-    padding: 14px 18px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #ddd;
+    background: rgba(0,105,92,0.12);
+    border-left: 3px solid var(--teal-claro);
+    padding: 14px 18px; border-radius: 0 8px 8px 0;
+    margin-bottom: 10px; font-size: 14px; color: #ddd;
   }
   .pergunta-box strong {
-    color: var(--laranja-claro);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 500;
+    color: var(--teal-claro); font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; display: block; margin-bottom: 6px; font-weight: 500;
   }
 
   /* DINÂMICA */
   .dinamica-box {
-    background: rgba(255, 214, 0, 0.07);
+    background: rgba(255,214,0,0.07);
     border: 1px solid rgba(255,214,0,0.2);
-    border-radius: 8px;
-    padding: 16px 18px;
-    margin-bottom: 10px;
+    border-radius: 8px; padding: 16px 18px; margin-bottom: 10px;
   }
   .dinamica-box .tag {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--destaque);
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: block;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--destaque); font-weight: 500; margin-bottom: 8px; display: block;
   }
   .dinamica-box p { font-size: 14px; color: #ddd; line-height: 1.8; }
 
   /* VERSO */
   .verso-box {
     background: rgba(255,255,255,0.04);
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin-top: 16px;
-    text-align: center;
-    font-style: italic;
-    color: #ccc;
-    font-size: 14px;
-    border: 1px solid var(--borda);
+    border-radius: 8px; padding: 16px 20px; margin-top: 16px;
+    text-align: center; font-style: italic; color: #ccc;
+    font-size: 14px; border: 1px solid var(--borda);
   }
   .verso-box span {
-    display: block;
-    color: var(--laranja-claro);
-    font-style: normal;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    font-weight: 500;
+    display: block; color: var(--teal-claro); font-style: normal;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 8px; font-weight: 500;
   }
 
   /* DICA */
   .dica {
-    background: rgba(74, 20, 140, 0.18);
+    background: rgba(74,20,140,0.18);
     border: 1px solid rgba(206,147,216,0.25);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin-top: 12px;
-    font-size: 13px;
-    color: #ccc;
+    border-radius: 8px; padding: 14px 18px; margin-top: 12px;
+    font-size: 13px; color: #ccc;
   }
   .dica strong {
-    color: var(--roxo-claro);
-    display: block;
-    margin-bottom: 6px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    color: var(--roxo-claro); display: block; margin-bottom: 6px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
   }
 
   /* HIGHLIGHT */
   .highlight-box {
-    background: rgba(230,81,0,0.10);
-    border: 1px solid rgba(255,138,101,0.2);
-    border-radius: 8px;
-    padding: 16px 18px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #ddd;
-    font-style: italic;
-    line-height: 1.8;
+    background: rgba(0,105,92,0.12);
+    border: 1px solid rgba(77,182,172,0.2);
+    border-radius: 8px; padding: 16px 18px; margin-bottom: 10px;
+    font-size: 14px; color: #ddd; font-style: italic; line-height: 1.8;
   }
   .highlight-box .fonte {
-    display: block;
-    color: var(--laranja-claro);
-    font-style: normal;
-    font-size: 11px;
-    letter-spacing: 1px;
-    margin-top: 8px;
+    display: block; color: var(--teal-claro); font-style: normal;
+    font-size: 11px; letter-spacing: 1px; margin-top: 8px;
   }
 
-  /* WIFI CARD */
-  .wifi-card {
-    background: linear-gradient(135deg, rgba(230,81,0,0.18), rgba(0,0,0,0.5));
-    border: 1px solid rgba(255,138,101,0.2);
-    border-radius: 12px;
-    padding: 20px 22px;
-    margin-bottom: 14px;
-    font-size: 14px;
-    color: #ddd;
-    line-height: 1.8;
+  /* CONTRASTE CARD */
+  .contraste {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0;
   }
-  .wifi-card .wifi-title {
-    color: var(--laranja-claro);
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* ESCALADA DE EXEMPLOS */
-  .exemplo-list { list-style: none; margin-top: 10px; }
-  .exemplo-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 14px;
-    color: #ccc;
-    margin-bottom: 10px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--borda);
-    line-height: 1.6;
-  }
-  .exemplo-list li .nome {
-    color: var(--laranja-claro);
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    min-width: 80px;
-    flex-shrink: 0;
-  }
-
-  /* DUPLA */
-  .dupla {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 12px 0;
-  }
-  @media(max-width: 560px) { .dupla { grid-template-columns: 1fr; } }
-  .dupla-card {
+  @media(max-width:560px){ .contraste { grid-template-columns: 1fr; } }
+  .contraste-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid var(--borda);
-    border-radius: 8px;
-    padding: 14px;
-    font-size: 13px;
-    color: #ccc;
-    line-height: 1.6;
+    border-radius: 8px; padding: 14px;
+    font-size: 13px; color: #ccc; line-height: 1.6;
   }
-  .dupla-card .label {
-    color: var(--laranja-claro);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    display: block;
-    font-weight: 500;
+  .contraste-card .label {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 6px; display: block; font-weight: 500;
   }
+  .contraste-card .label.vermelho { color: #EF9A9A; }
+  .contraste-card .label.verde    { color: var(--verde-claro); }
 
+  /* LISTA */
   ul.lista { padding-left: 20px; margin-top: 8px; }
   ul.lista li { color: #bbb; font-size: 14px; margin-bottom: 6px; }
-  ul.lista li::marker { color: var(--laranja-claro); }
+  ul.lista li::marker { color: var(--teal-claro); }
+
+  /* HISTORY CARD */
+  .story-card {
+    background: linear-gradient(135deg, rgba(0,105,92,0.2), rgba(0,0,0,0.5));
+    border: 1px solid rgba(77,182,172,0.2);
+    border-radius: 12px; padding: 20px 22px; margin-bottom: 14px;
+    font-size: 14px; color: #ddd; line-height: 1.8;
+  }
+  .story-card .story-title {
+    color: var(--teal-claro); font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 700; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
 
   /* CRONOGRAMA */
   .cronograma {
-    background: var(--card-bg);
-    border: 1px solid var(--borda);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 40px;
+    background: var(--card-bg); border: 1px solid var(--borda);
+    border-radius: 12px; overflow: hidden; margin-bottom: 40px;
   }
   .crono-titulo {
-    background: var(--laranja);
-    padding: 14px 24px;
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    background: var(--teal); padding: 14px 24px;
+    font-family: 'Syne', sans-serif; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase;
   }
   .crono-row {
-    display: flex;
-    align-items: center;
-    padding: 12px 24px;
-    border-bottom: 1px solid var(--borda);
-    font-size: 14px;
-    gap: 16px;
+    display: flex; align-items: center; padding: 12px 24px;
+    border-bottom: 1px solid var(--borda); font-size: 14px; gap: 16px;
   }
   .crono-row:last-child { border-bottom: none; }
-  .crono-min {
-    color: var(--laranja-claro);
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    min-width: 50px;
-  }
+  .crono-min { color: var(--teal-claro); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; min-width: 50px; }
   .crono-nome { color: #ddd; flex: 1; }
-  .crono-tipo {
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 100px;
-    background: rgba(255,255,255,0.07);
-    color: #aaa;
-  }
+  .crono-tipo { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.07); color: #aaa; }
 
   /* TEXTO BASE */
   .texto-base {
-    background: linear-gradient(135deg, #1a0800, #1a1a1a);
-    border: 1px solid var(--laranja);
-    border-radius: 12px;
-    padding: 28px;
-    margin-bottom: 40px;
-    text-align: center;
+    background: linear-gradient(135deg, #050f0c, #1a1a1a);
+    border: 1px solid var(--teal); border-radius: 12px;
+    padding: 28px; margin-bottom: 40px; text-align: center;
   }
   .texto-base .ref {
-    color: var(--laranja-claro);
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    display: block;
+    color: var(--teal-claro); font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 12px; display: block;
   }
   .texto-base blockquote {
     font-size: clamp(14px, 2.4vw, 17px);
-    color: var(--branco);
-    font-style: italic;
-    line-height: 1.8;
-  }
-
-  /* BOTÃO QUIZ */
-  .quiz-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--laranja), var(--laranja-medio));
-    color: #fff;
-    padding: 16px 48px;
-    border-radius: 8px;
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 2px solid var(--laranja);
-    cursor: pointer;
-    margin-bottom: 40px;
-  }
-  .quiz-btn:hover {
-    background: linear-gradient(135deg, var(--laranja-medio), var(--laranja));
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(230, 81, 0, 0.3);
-  }
-  .quiz-btn:active {
-    transform: translateY(0);
+    color: var(--branco); font-style: italic; line-height: 1.8;
   }
 
   footer {
-    text-align: center;
-    padding: 32px 20px;
-    color: #444;
-    font-size: 13px;
-    border-top: 1px solid var(--borda);
+    text-align: center; padding: 32px 20px;
+    color: #444; font-size: 13px; border-top: 1px solid var(--borda);
   }
   footer strong { color: #666; }
 
-  @media(max-width: 520px) {
+  @media(max-width:520px){
     .bloco-header { padding: 16px; gap: 10px; }
     .bloco-titulo { font-size: 14px; }
     .crono-row { padding: 10px 16px; }
@@ -490,13 +291,13 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="licao-badge">Lição 8 · 16–22 de Maio</div>
-  <h1>Vivendo<br><span>pela Fé</span></h1>
+  <div class="licao-badge">Lição 10 · 30 de Maio – 5 de Junho</div>
+  <h1>Arrependimento<br><span>e Perdão</span></h1>
   <p>Recapitulação interativa para a classe de jovens. Duração: <strong style="color:#fff">50 minutos</strong></p>
   <div class="meta-row">
-    <div class="meta-pill"><span class="dot"></span> Marcos 9:14–29</div>
+    <div class="meta-pill"><span class="dot"></span> Êxodo 34:1–9</div>
     <div class="meta-pill"><span class="dot"></span> 5 blocos dinâmicos</div>
-    <div class="meta-pill"><span class="dot"></span> Fé, dúvida e movimento</div>
+    <div class="meta-pill"><span class="dot"></span> Debate + reflexão pessoal</div>
   </div>
 </div>
 
@@ -504,9 +305,10 @@
 
   <!-- TEXTO BASE -->
   <div class="texto-base">
-    <span class="ref">Texto-chave · Marcos 9:23–24</span>
+    <span class="ref">Base da semana · Êxodo 34:6–7 · 1 João 1:9</span>
     <blockquote>
-      "'Se o Senhor pode fazer alguma coisa…' Jesus respondeu: 'Se podes? Tudo é possível ao que crê!' O homem exclamou: 'Eu creio! Ajude-me na minha falta de fé!'"
+      "O Senhor, o Senhor, Deus compassivo e misericordioso, tardio em irar-Se e cheio de amor leal e fidelidade, que mantém o Seu amor leal a milhares e perdoa a iniquidade, a transgressão e o pecado."<br>
+      <span style="font-size:13px; color:#aaa; font-style:normal; margin-top:8px; display:block;">— Êxodo 34:6–7 · NVI</span>
     </blockquote>
   </div>
 
@@ -515,33 +317,33 @@
   <div class="cronograma">
     <div class="crono-titulo">⏱ Visão Geral · 50 Minutos</div>
     <div class="crono-row">
-      <span class="crono-min">0–7'</span>
-      <span class="crono-nome">Abertura: Menos Wi-Fi, Mais Wi-Fé</span>
+      <span class="crono-min">0–8'</span>
+      <span class="crono-nome">Abertura: A Roupa Suja — dinâmica de identificação</span>
       <span class="crono-tipo">Quebra-gelo</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">7–17'</span>
-      <span class="crono-nome">Bloco 1 · O Wi-Fi Divino + Fé Viva</span>
+      <span class="crono-min">8–18'</span>
+      <span class="crono-nome">Bloco 1 · O Bezerro de Ouro + A Correria da Vida</span>
       <span class="crono-tipo">Ensino + Debate</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">17–27'</span>
-      <span class="crono-nome">Bloco 2 · Fé e Sentimentos — quando não "sentimos" Deus</span>
+      <span class="crono-min">18–28'</span>
+      <span class="crono-nome">Bloco 2 · Chamados pelo Espírito Santo</span>
       <span class="crono-tipo">Reflexão honesta</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">27–37'</span>
-      <span class="crono-nome">Bloco 3 · A Fé que se Revela nas Atitudes</span>
-      <span class="crono-tipo">Debate + Exemplos bíblicos</span>
+      <span class="crono-min">28–38'</span>
+      <span class="crono-nome">Bloco 3 · Arrependimento Verdadeiro vs. Falso</span>
+      <span class="crono-tipo">Contraste + Debate</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">37–45'</span>
-      <span class="crono-nome">Bloco 4 · Vivendo pela Fé — fé que se move</span>
-      <span class="crono-tipo">Aplicação prática</span>
+      <span class="crono-min">38–46'</span>
+      <span class="crono-nome">Bloco 4 · Roupas e Identidade — o perdão como nova veste</span>
+      <span class="crono-tipo">Ensino + Aplicação</span>
     </div>
     <div class="crono-row">
-      <span class="crono-min">45–50'</span>
-      <span class="crono-nome">Encerramento: "Ajuda-me na minha falta de fé"</span>
+      <span class="crono-min">46–50'</span>
+      <span class="crono-nome">Encerramento: O Filho Pródigo Sou Eu</span>
       <span class="crono-tipo">Compromisso + Oração</span>
     </div>
   </div>
@@ -552,27 +354,28 @@
   <!-- ABERTURA -->
   <div class="bloco open">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge amarelo">0–7 min</span>
-      <span class="bloco-icone">📶</span>
-      <span class="bloco-titulo">Abertura — Menos Wi-Fi, Mais Wi-Fé</span>
+      <span class="tempo-badge amarelo">0–8 min</span>
+      <span class="bloco-icone">👕</span>
+      <span class="bloco-titulo">Abertura — A Roupa Suja</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        A tirinha da lição resume tudo: o jovem sai em busca de conexão, descobre que a melhor conexão é com Deus, e vai de joelhos. Use esse gancho visual para abrir o debate com leveza — e ir ficando mais sério à medida que a aula avança.
+        Comece com uma imagem visual simples que conecta ao tema central da lição de quinta-feira: roupas simbolizam identidade e condição espiritual. Use isso para criar curiosidade antes de entrar no conteúdo.
       </p>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Dinâmica de abertura rápida — 4 minutos</span>
-        <p>Faça a seguinte pergunta para a turma:<br><br>
-        <strong style="color:#FFD600">"Você passa mais tempo conectado ao Wi-Fi ou ao 'Wi-Fé'? Dê uma nota de 0 a 10 para cada — sem mentir."</strong><br><br>
-        Peça que 3 ou 4 voluntários respondam em voz alta. Depois faça a virada:<br><br>
-        <em style="color:#aaa;">"A lição desta semana nos desafia exatamente aqui: a fé é como o wi-fi — invisível, mas capaz de nos conectar ao que realmente precisamos. Sem ela, a conexão cai. E a questão da semana é: como manter essa conexão viva mesmo quando a 'antena' parece fraca?"</em></p>
+        <span class="tag">✦ Dinâmica de abertura — 5 minutos</span>
+        <p>Mostre (ou descreva) duas situações e pergunte à turma qual das duas representa melhor a experiência espiritual deles <em>esta semana</em>:<br><br>
+        👕 <strong style="color:#FFD600">Situação A:</strong> "Uma roupa bonita que você colocou na máquina de lavar — está sendo lavada, você confia no processo."<br><br>
+        🧥 <strong style="color:#FFD600">Situação B:</strong> "Uma roupa suja que você jogou no canto do quarto há dias — você sabe que precisa lavar, mas vai deixando."<br><br>
+        Deixe 3 ou 4 voluntários responderem sem julgamento. Depois faça a virada:<br><br>
+        <em style="color:#aaa;">"A lição desta semana fala exatamente sobre isso. Deus não só nos oferece perdão — Ele quer nos dar uma roupa nova. Mas para isso, é preciso entregar a roupa suja."</em></p>
       </div>
 
-      <div class="wifi-card">
-        <div class="wifi-title">📶 A metáfora central da semana</div>
-        A fé é invisível — mas real. Ela nos conecta a Deus da mesma forma que o wi-fi nos conecta à internet. Você não vê as ondas, mas sente os efeitos quando está conectado. E sente falta quando a conexão cai.
+      <div class="dica">
+        <strong>💡 Conexão com a tirinha da lição</strong>
+        A tirinha mostra uma criança com a roupa manchada sendo ajudada a tirar e receber uma roupa limpa. Perfeita para ilustrar: Deus não pede que você conserte sua roupa — Ele oferece uma completamente nova, que vem do sacrifício de Cristo.
       </div>
     </div>
   </div>
@@ -580,45 +383,34 @@
   <!-- BLOCO 1 -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge">7–17 min</span>
-      <span class="bloco-icone">🌱</span>
-      <span class="bloco-titulo">Bloco 1 — O Wi-Fi Divino + Fé Viva</span>
+      <span class="tempo-badge">8–18 min</span>
+      <span class="bloco-icone">🐂</span>
+      <span class="bloco-titulo">Bloco 1 — O Bezerro de Ouro + A Correria da Vida</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula domingo e segunda. A fé não é algo que fabricamos — é um dom de Deus (Ef 2:8,9). Cada um recebe uma "medida de fé" (Rm 12:3). O que fazemos com ela é nossa decisão. A fé é viva: pode crescer, pode enfraquecer — e nunca exige perfeição para começar.
+        Recapitula domingo e segunda. O Israel que adorou o bezerro de ouro não era um povo pagão — era um povo que havia feito uma aliança solene com Deus semanas antes. A história de Juliana (correria do sábado) mostra que o mesmo padrão acontece com a gente hoje: não é rejeição direta, é distração gradual.
       </p>
 
+      <div class="story-card">
+        <div class="story-title">📖 O contexto de Êxodo 32–34</div>
+        Os israelitas haviam acabado de prometer lealdade total a Deus — e poucos dias depois cercaram a tenda de Arão exigindo um ídolo. Moisés estava no monte recebendo a lei. O povo pensou que ele havia morrido. Temendo, cederam ao medo. O resultado: uma rebelião diante da qual mesmo Deus perguntou se deveria destruí-los (Êx 32:10). A cena de Êxodo 34 é a resposta de misericórdia que veio depois do arrependimento coletivo.
+      </div>
+
       <div class="pergunta-box">
-        <strong>🗣 Pergunta de abertura (2 min)</strong>
-        "Em apenas 60 segundos — como você descreveria sua fé em Deus agora? Forte, fraca, confusa, crescendo, estagnada? O que essa resposta revela sobre sua relação com Ele?"
+        <strong>🗣 Pergunta de aquecimento (2 min)</strong>
+        "Juliana amava a Deus — e ainda assim passou o sábado inteiro fazendo coisas 'necessárias' que a distanciaram Dele. Você já viveu uma 'semana bezerro de ouro' — não adoração a ídolos, mas coisas urgentes engolindo o importante? O que aconteceu?"
       </div>
 
       <div class="pergunta-box">
         <strong>💬 Debate (4 min)</strong>
-        "O pai de Marcos 9 disse: 'Se o Senhor pode fazer alguma coisa.' Jesus virou a pergunta: 'Se podes? Tudo é possível ao que crê.' Por que Jesus colocou a questão de volta no homem? O que isso diz sobre onde mora o 'problema' — em Deus ou em nós?"
-      </div>
-
-      <div class="dupla">
-        <div class="dupla-card">
-          <span class="label">A fé não é estática</span>
-          Céticos convictos podem se tornar crentes firmes — e o contrário também é verdadeiro. Alguém que crê desde a infância pode perder a fé se não a nutrir (Hb 10:23).
-        </div>
-        <div class="dupla-card">
-          <span class="label">Jesus começa com o mínimo</span>
-          Ele não exige fé perfeita. Começa com algo mínimo — uma fé do tamanho de um grão de mostarda (Mt 17:20). Se estivermos dispostos a cooperar, Deus fará ela crescer.
-        </div>
+        "A lição diz que o mundo secular repete: 'Você já está bem do jeito que é.' Ao contrário disso, Deus nos convida a voltar a Ele em arrependimento e fé (At 20:21). Por que essa mensagem de 'você já está bem' é perigosa para a vida espiritual de um jovem hoje?"
       </div>
 
       <div class="verso-box">
-        <span>Marcos 9:24</span>
-        "Eu creio! Ajude-me na minha falta de fé!" — Essa é a oração mais honesta da Bíblia. Fé e dúvida andando juntas — e Jesus respondeu a isso.
-      </div>
-
-      <div class="dica">
-        <strong>💡 Ponto-chave para reforçar</strong>
-        A geração de hoje busca sinais para crer. Mas os sinais já estão ao nosso redor: profecias cumpridas, a criação, a Bíblia, histórias de transformação. O segredo é focar no que fortalece a fé, não no que a corrói.
+        <span>Êxodo 34:6–7</span>
+        "Compassivo e misericordioso, tardio em irar-Se e cheio de amor leal e fidelidade, que mantém o Seu amor leal a milhares e perdoa a iniquidade, a transgressão e o pecado."
       </div>
     </div>
   </div>
@@ -626,39 +418,36 @@
   <!-- BLOCO 2 -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge azul">17–27 min</span>
-      <span class="bloco-icone">🌊</span>
-      <span class="bloco-titulo">Bloco 2 — Fé e Sentimentos: quando não "sentimos" Deus</span>
+      <span class="tempo-badge azul">18–28 min</span>
+      <span class="bloco-icone">🕊️</span>
+      <span class="bloco-titulo">Bloco 2 — Chamados pelo Espírito Santo</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula terça. Um dos maiores equívocos da vida cristã: confundir fé com sentimento. Muitos jovens acham que não têm fé porque não "sentem" Deus perto. Mas fé é crer e confiar mesmo na escuridão, mesmo quando não entendemos o que está acontecendo.
+        Recapitula terça. Um dos pontos mais importantes e menos discutidos: o arrependimento não começa em nós — começa no Espírito Santo. Sem Sua atuação, somos espiritualmente indefesos. E a tristeza que sentimos às vezes pelas nossas ações não é necessariamente arrependimento — pode ser apenas constrangimento.
       </p>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Dinâmica "Sentimento ou Fé?" — 4 minutos</span>
-        <p>Leia as situações abaixo e peça que a turma responda: isso é <strong style="color:#FFD600">sentimento</strong> ou <strong style="color:#FFD600">fé</strong>?<br><br>
-        🔸 "Hoje o culto foi incrível, sinto Deus muito perto. Estou animado para ler a Bíblia."<br>
-        🔸 "Não sinto nada faz semanas. Mas vou continuar orando e lendo porque sei que Ele está aqui."<br>
-        🔸 "Hoje estou deprimido. Não tenho vontade de ir à igreja. Mas vou mesmo assim."<br>
-        🔸 "Me sinto tão cheio do Espírito agora — com certeza Deus me ouviu."<br><br>
-        <em style="color:#aaa;">O objetivo é mostrar que sentimentos são reais mas não são termômetro da presença de Deus. Fé age mesmo quando o sentimento contradiz.</em></p>
+        <span class="tag">✦ Dinâmica de reflexão silenciosa — 2 minutos</span>
+        <p>Peça que a turma fique em silêncio por 30 segundos e responda mentalmente:<br><br>
+        <strong style="color:#FFD600">"Quando foi a última vez que você percebeu uma repreensão de Deus — aquela voz quieta que dizia que algo estava errado? Como você reagiu: ouviu, justificou, ou ignorou?"</strong><br><br>
+        Depois, quem quiser, pode compartilhar brevemente. O silêncio também é válido — e às vezes diz mais.</p>
       </div>
 
       <div class="highlight-box">
-        "Muitos não exercem aquela fé que têm o privilégio e o dever de exercer, esperando muitas vezes experimentar aquela sensação que unicamente a fé pode trazer. Sentimento não é fé. Cabe a nós exercitar a fé; mas aquele sentimento de alegria e bênçãos, Deus é quem os dá."
-        <span class="fonte">— Ellen G. White, Primeiros Escritos, p. 86</span>
+        "Muitas vezes nos entristecemos porque nossas más ações nos trazem desagradáveis consequências; mas isso não é arrependimento. A verdadeira tristeza pelo pecado é o resultado da atuação do Espírito Santo. Este revela a ingratidão da alma que menosprezou e ofendeu o Salvador, levando-nos contritos ao pé da cruz."
+        <span class="fonte">— Ellen G. White, O Desejado de Todas as Nações, p. 233</span>
       </div>
 
       <div class="pergunta-box">
-        <strong>💬 Debate (3 min)</strong>
-        "Quando seus sentimentos dizem o contrário — que Deus está longe, que a fé não funciona, que você não é cristão o suficiente — o que você faz para lembrar quem Deus realmente é? Quais hábitos te mantêm conectado à 'voz certa'?"
+        <strong>💬 Debate central (4 min)</strong>
+        "Qual é a diferença entre se arrepender porque as consequências foram ruins e se arrepender porque você percebeu que ofendeu a Deus? Isso muda o que acontece depois? Dê um exemplo concreto da vida real."
       </div>
 
       <div class="dica">
-        <strong>💡 Ponto central</strong>
-        A fé não depende de emoções ou momentos empolgantes. Ela se apoia na Palavra de Deus (Rm 10:17) e exige uma decisão consciente, mesmo quando vai contra o que sentimos. O sentimento de alegria vem como consequência — não como pré-requisito.
+        <strong>💡 Ponto central para deixar claro</strong>
+        Resistir ao Espírito Santo não só nos mantém no pecado — nos entristece e enfraquece a comunhão com Deus (Ef 4:30). O desejo de Deus é nos perdoar e purificar. O obstáculo nunca é do lado Dele — é sempre da nossa disposição de reconhecer e confessar.
       </div>
     </div>
   </div>
@@ -666,38 +455,40 @@
   <!-- BLOCO 3 -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge vermelho">27–37 min</span>
-      <span class="bloco-icone">⚡</span>
-      <span class="bloco-titulo">Bloco 3 — A Fé que se Revela nas Atitudes</span>
+      <span class="tempo-badge vermelho">28–38 min</span>
+      <span class="bloco-icone">⚖️</span>
+      <span class="bloco-titulo">Bloco 3 — Arrependimento Verdadeiro vs. Falso</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula quarta e a lição de comunidade. A fé bíblica nunca é passiva — ela gera movimento. A Bíblia está cheia de pessoas que creram com dúvida no coração, mas que agiram. E foi justamente no ato de se mover que a fé se revelou e cresceu.
+        Recapitula sexta. Este é o bloco mais desafiador — e o mais necessário. A lição faz uma distinção que poucos jovens aprendem explicitamente: existem formas de "arrependimento" que não são arrependimento bíblico. A diferença está no que você realmente quer abandonar: o sofrimento causado pelo pecado, ou o pecado em si.
       </p>
 
-      <div class="dinamica-box">
-        <span class="tag">✦ Dinâmica dos heróis "imperfeitos" da fé — 4 minutos</span>
-        <p>Apresente cada personagem e pergunte: <strong style="color:#FFD600">"O que essa pessoa fez com a dúvida que tinha?"</strong></p>
+      <div class="contraste">
+        <div class="contraste-card">
+          <span class="label vermelho">✗ Arrependimento Falso</span>
+          Lamentar o pecado por medo das consequências. Mudar o comportamento por um tempo por causa do sofrimento causado. Confessar mas continuar justificando. Esaú chorou ao perder a primogenitura — não por ter menosprezado o sagrado. Balaão reconheceu sua culpa com medo de morrer. Judas disse "pequei" — mas não buscou perdão, buscou alívio da culpa.
+        </div>
+        <div class="contraste-card">
+          <span class="label verde">✓ Arrependimento Verdadeiro</span>
+          Tristeza pelo pecado em si — por ter ofendido a Deus e não apenas pelas consequências. Inclui mudança real de direção. Resulta em confissão específica, devolução do que foi roubado, restauração do que foi quebrado. Produz reforma — não só sentimento. Não abandona o pecado enquanto não reconhecer quão perigoso ele é.
+        </div>
       </div>
 
-      <ul class="exemplo-list">
-        <li><span class="nome">Abraão</span> Creu, mas riu quando Deus prometeu um filho (Gn 17:17). Mesmo assim foi considerado pai da fé.</li>
-        <li><span class="nome">Gideão</span> Pediu prova após prova antes de agir (Jz 6:36-40). Mesmo assim foi usado por Deus.</li>
-        <li><span class="nome">Pedro</span> Afundou, mas foi o único a andar sobre as águas (Mt 14:29-30). Tentou — os outros não.</li>
-        <li><span class="nome">Noé</span> Construiu um barco sem ver chuva. A fé virou madeira, pregos e trabalho.</li>
-        <li><span class="nome">Josué</span> Deu 7 voltas em silêncio ao redor de Jericó. A vitória veio pela obediência, não pela lógica.</li>
-        <li><span class="nome">Davi</span> Correu em direção ao gigante — não fugiu. A fé se revelou nas pernas em movimento.</li>
-      </ul>
-
-      <div class="pergunta-box">
-        <strong>💬 Debate central (3 min)</strong>
-        "C. S. Lewis escreveu: 'A fé é a arte de segurar firme nas coisas que a razão aceitou, mesmo quando os sentimentos mudam.' E a lição de comunidade diz: 'A fé que não se move, morre.' Como você une essas duas ideias? O que seria uma fé que se move na sua vida prática esta semana?"
+      <div class="dinamica-box">
+        <span class="tag">✦ Dinâmica "Qual é qual?" — 4 minutos</span>
+        <p>Leia os casos abaixo e peça que a turma identifique: arrependimento <strong style="color:#66BB6A">verdadeiro</strong> ou <strong style="color:#EF9A9A">falso</strong>?<br><br>
+        🔹 "Errei com meu amigo, mas só pedi desculpa porque minha mãe ficou sabendo e ia me punir."<br>
+        🔹 "Percebi que fui injusto com alguém. Fui até ela, confessei, pedi perdão e devolvi o que havia tomado."<br>
+        🔹 "Fiquei triste por ter perdido a amizade de alguém por causa do meu comportamento — mas não mudei."<br>
+        🔹 "Estava fazendo algo errado. Senti uma inquietação no coração, parei, confessei a Deus e mudei."<br><br>
+        <em style="color:#aaa;">Deixe a turma debater. Não existe resposta automática — o objetivo é aguçar o discernimento.</em></p>
       </div>
 
       <div class="verso-box">
-        <span>Tiago 2:18</span>
-        "Mostre-me essa sua fé sem as obras, e eu, com as obras, lhe mostrarei a minha fé." — Fé sem movimento não é fé: é concordância teórica.
+        <span>1 João 1:9</span>
+        "Se confessarmos os nossos pecados, Ele é fiel e justo para nos perdoar os pecados e nos purificar de toda injustiça."
       </div>
     </div>
   </div>
@@ -705,34 +496,34 @@
   <!-- BLOCO 4 -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge teal">37–45 min</span>
-      <span class="bloco-icone">🏔️</span>
-      <span class="bloco-titulo">Bloco 4 — Vivendo pela Fé na Prática</span>
+      <span class="tempo-badge roxo">38–46 min</span>
+      <span class="bloco-icone">✨</span>
+      <span class="bloco-titulo">Bloco 4 — Roupas e Identidade: o Perdão como Nova Veste</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula a lição de comunidade. Erik Weihenmayer, alpinista cego que escalou o Everest, disse: "aprendi a confiar na voz certa." Sem enxergar o caminho e sem garantias, ele simplesmente seguia a orientação do guia. Esse é o retrato mais claro de viver pela fé.
+        Recapitula quinta. Este bloco conecta tudo: o perdão não é apenas um "apagar o erro" — é uma troca de identidade. Você entrega a roupa manchada da sua própria justiça e recebe a veste branca da justiça de Cristo. E ninguém consegue "costurar" sua própria roupa de justiça.
       </p>
 
       <div class="pergunta-box">
-        <strong>🗣 Pergunta de aplicação (3 min)</strong>
-        "Em qual área da sua vida a fé precisa virar atitude prática nesta semana? Família, faculdade, saúde, relacionamentos, missão? O que você tem adiado esperando 'sentir mais certeza' antes de agir?"
+        <strong>🗣 Pergunta de reflexão (3 min)</strong>
+        "A Bíblia diz que 'todos os nossos atos de justiça são como trapo imundo' (Is 64:6). Isso parece desanimador — mas a lição mostra que é uma boa notícia. Por quê? O que muda quando você para de tentar consertar sua própria roupa e aceita a de Cristo?"
       </div>
 
       <div class="highlight-box">
-        "A fé em Jesus aumentará à medida que vocês forem se relacionando mais com o Redentor pela meditação em Sua vida imaculada e em Seu infinito amor. Vocês não conseguirão desonrar mais a Deus do que professando ser Seu discípulo ao passo que Dele se mantêm à distância."
-        <span class="fonte">— Ellen G. White, O Desejado de Todas as Nações, p. 344</span>
+        "A veste branca representa a 'justiça de Cristo e Seu caráter imaculado', que, 'pela fé', é 'comunicada a todos os que O aceitam como Salvador pessoal'."
+        <span class="fonte">— Ellen G. White, Parábolas de Jesus, p. 182</span>
       </div>
 
       <div class="pergunta-box">
         <strong>💬 Debate final (3 min)</strong>
-        "Que dúvida ou medo você precisa entregar ao Senhor hoje — dizendo como o pai do jovem possesso: 'Ajuda-me na minha incredulidade'? Deus rejeita a indiferença, não a honestidade. Qual é a diferença entre os dois?"
+        "Na parábola das bodas (Mt 22:1-14), um convidado entrou sem a veste adequada — ele sabia que ela existia, mas escolheu não usá-la. Preferiu a sua própria roupa. Que atitudes ou pensamentos levam um jovem hoje a 'preferir sua própria roupa' em vez de aceitar a justiça de Cristo?"
       </div>
 
       <div class="dica">
-        <strong>💡 Frase de impacto para encerrar o bloco</strong>
-        "Um dos maiores equívocos da vida cristã é imaginar que fé é o contrário de dúvida. Não é. Fé é o que fazemos com a dúvida." — A dúvida pode bater à porta, mas não precisa entrar e tomar conta da nossa casa.
+        <strong>💡 Imagem poderosa para usar</strong>
+        Adão e Eva cobriram a nudez com folhas de figueira — feitos por eles mesmos, frágeis e insuficientes. Deus os cobriu com túnicas de pele — que vieram de um sacrifício. Desde o início, o plano de Deus sempre foi cobrir nossa insuficiência com algo que Ele mesmo proveu. Isso não mudou.
       </div>
     </div>
   </div>
@@ -740,35 +531,33 @@
   <!-- ENCERRAMENTO -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge roxo">45–50 min</span>
-      <span class="bloco-icone">🙌</span>
-      <span class="bloco-titulo">Encerramento — "Ajuda-me na minha falta de fé"</span>
+      <span class="tempo-badge verde">46–50 min</span>
+      <span class="bloco-icone">🏠</span>
+      <span class="bloco-titulo">Encerramento — O Filho Pródigo Sou Eu</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Feche conectando tudo ao versículo-chave. A oração mais honesta da semana não foi de um doutor da lei — foi de um pai desesperado que dizia ao mesmo tempo "eu creio" e "me ajude a crer mais." Essa é a oração que Deus responde.
+        Feche com a parábola do filho pródigo (Lc 15) como espelho da semana inteira. É a história mais completa de arrependimento e perdão na Bíblia — e é sobre nós.
       </p>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Compromisso da semana — "Minha atitude de fé" (3 min)</span>
-        <p>Peça que cada jovem escolha mentalmente (ou escreva se quiser) uma resposta para cada pergunta:<br><br>
-        🔶 <strong style="color:#FFD600">Onde minha fé precisa virar ação esta semana?</strong><br>
-        ___ (ex: conversar com alguém, voltar à oração, pedir perdão, dar um passo numa decisão)<br><br>
-        🔶 <strong style="color:#FFD600">Qual sentimento tenho deixado comandar minha fé?</strong><br>
-        ___ (medo, dúvida, apatia, vergonha, desânimo)<br><br>
-        🔶 <strong style="color:#FFD600">O que vou fazer diferente nos próximos 7 dias?</strong><br>
-        ___ (hábito concreto, não intenção genérica)</p>
+        <span class="tag">✦ Encerramento narrativo + oração (4 min)</span>
+        <p>Relate brevemente a parábola e faça a virada pessoal:<br><br>
+        <em style="color:#ccc;">"O filho se levantou e foi ao pai. Não mandou mensagem primeiro. Não esperou sentir vontade. Não esperou ter as palavras certas. Ele simplesmente foi — ainda com cheiro de porco, ainda com roupa suja."</em><br><br>
+        <strong style="color:#FFD600">"Há algo que você está carregando esta semana que precisa entregar ao Pai agora?"</strong><br><br>
+        Faça uma pausa de 30 segundos em silêncio. Depois convide quem quiser a orar em voz alta ou em silêncio — e você fecha com uma oração baseada em 1Jo 1:9.<br><br>
+        <em style="color:#aaa;">Não force. O silêncio nesse momento pode ser mais poderoso do que qualquer palavra.</em></p>
       </div>
 
       <div class="verso-box">
-        <span>Para encerrar em oração</span>
-        Convide a turma a orar em silêncio, usando as palavras de Marcos 9:24 como oração pessoal: <em>"Eu creio! Ajuda-me na minha falta de fé."</em> Simples, honesta, e exatamente o que Jesus respondeu com um milagre.
+        <span>Para encerrar — Lucas 15:20</span>
+        "Quando ele ainda estava longe, seu pai o viu e, movido de compaixão, correu ao seu encontro, lançou-se-lhe ao pescoço e o beijou." — O pai não esperou o filho chegar. Correu.
       </div>
 
       <div class="dica">
-        <strong>💡 Retome o quebra-gelo do início</strong>
-        Feche perguntando: "Lembra da nota que você deu para o seu 'Wi-Fé' no começo da aula? Depois de tudo que estudamos — você mudaria a nota? O que mudaria na sua conexão?" — Cria um arco narrativo completo e termina com propósito.
+        <strong>💡 Retome o quebra-gelo inicial</strong>
+        Feche perguntando: "Lembra das duas roupas que apresentamos no começo? A que estava na lavanderia e a que estava jogada no canto? Hoje é um bom dia para parar de deixar no canto." — Cria um arco narrativo completo do começo ao fim da aula.
       </div>
     </div>
   </div>
@@ -777,27 +566,22 @@
   <p class="section-title">Perguntas Extras se Sobrar Tempo</p>
 
   <div class="pergunta-box">
-    <strong>➕ Bônus 1 — Sobre a fé "emprestada"</strong>
-    "A lição de segunda diz que alguns tentam 'tomar fé emprestada' de outros — como as virgens imprudentes que pediram óleo às amigas (Mt 25:8). Por que a fé não pode ser emprestada? O que isso exige de cada um individualmente?"
+    <strong>➕ Bônus 1 — Sobre a graça suficiente (segunda)</strong>
+    "Êxodo 34 acontece depois de uma das maiores traições da história bíblica — o bezerro de ouro. Ainda assim, Deus Se revela como 'compassivo e misericordioso'. O que isso nos diz sobre os limites do perdão de Deus? Existe algum pecado que coloca uma pessoa fora do alcance da graça?"
   </div>
   <div class="pergunta-box">
-    <strong>➕ Bônus 2 — Sobre a incredulidade como barreira</strong>
-    "A lição de quarta diz que 'a incredulidade não é apenas dúvida, mas uma barreira que impede a graça de agir.' Qual é a diferença entre dúvida honesta e incredulidade? Alguém consegue dar um exemplo concreto?"
+    <strong>➕ Bônus 2 — Sobre o hipertexto (quarta)</strong>
+    "A lição de quarta menciona que nossas 'roupas sujas' simbolizam o pecado (Is 64:6), e a 'veste branca' representa a justiça de Cristo (Is 61:10). Deus remove nossa culpa e nos cobre com Sua pureza (Zc 3:1-5). O que essa imagem das vestes revela sobre a natureza do perdão — é apenas jurídico (apagar o erro) ou também transforma quem somos?"
   </div>
   <div class="pergunta-box">
     <strong>➕ Bônus 3 — Para os mais corajosos</strong>
-    "Paulo exortou: 'Examinem-se para ver se realmente estão na fé' (2Co 13:5). Se você fizesse esse exame honesto agora — o que encontraria? O que você alimenta mais: a fé ou a incredulidade?"
-  </div>
-
-  <!-- BOTÃO QUIZ -->
-  <div style="text-align: center;">
-    <a href="quiz.html" class="quiz-btn">➤ Ir para o Quiz</a>
+    "A lição diz que 'arrepender-se não é apenas sentir culpa; é mudar de direção.' Em qual área da sua vida o 'arrependimento' tem ficado só no sentimento — sem a mudança de direção? O que impede que vire ação?"
   </div>
 
 </div>
 
 <footer>
-  Lição 8 · <strong>Vivendo pela Fé</strong> · 16–22 de Maio · Marcos 9:14–29<br>
+  Lição 10 · <strong>Arrependimento e Perdão</strong> · 30 de Maio – 5 de Junho · Êxodo 34:1–9<br>
   Estrutura para recapitulação jovem · 50 minutos
 </footer>
 
