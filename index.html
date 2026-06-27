@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lição 11 — Tribulações e Confiança</title>
+<title>Lição 13 — Por Toda a Eternidade</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
   :root {
-    --azul:        #0d47a1;
-    --azul-medio:  #1565C0;
-    --azul-claro:  #42A5F5;
-    --azul-ceu:    #64B5F6;
-    --preto:       #080c10;
-    --branco:      #F0F4F8;
-    --destaque:    #FFD600;
-    --card-bg:     #0d1420;
-    --borda:       #1e2840;
-    --teal:        #004D40;
-    --teal-claro:  #4DB6AC;
-    --vermelho:    #7B0000;
-    --roxo:        #4A148C;
-    --roxo-claro:  #CE93D8;
-    --verde:       #1B5E20;
-    --verde-claro: #66BB6A;
-    --amarelo:     #7B5800;
+    --dourado:      #C9A84C;
+    --dourado-claro: #F0D080;
+    --azul-noite:   #0a1530;
+    --azul-medio:   #1a2a5e;
+    --azul-claro:   #5C7CC7;
+    --preto:        #07090f;
+    --branco:       #F5F2E8;
+    --destaque:     #FFD600;
+    --card-bg:      #0d1220;
+    --borda:        #1f2840;
+    --roxo:         #4A148C;
+    --roxo-claro:   #CE93D8;
+    --verde:        #1B5E20;
+    --verde-claro:  #66BB6A;
+    --vermelho:     #7B0000;
+    --teal:         #004D40;
+    --teal-claro:   #4DB6AC;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,34 +37,31 @@
     line-height: 1.7;
   }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero {
     background:
-      radial-gradient(ellipse 80% 60% at 20% 30%, rgba(13,71,161,0.4) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 40% at 80% 70%, rgba(0,77,64,0.3) 0%, transparent 70%),
-      linear-gradient(160deg, #030810 0%, #0a1428 50%, #040c18 100%);
+      radial-gradient(ellipse 70% 60% at 25% 25%, rgba(201,168,76,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 75%, rgba(26,42,94,0.5) 0%, transparent 70%),
+      linear-gradient(160deg, #05070d 0%, #0a1530 55%, #050810 100%);
     padding: 60px 32px 50px;
     text-align: center;
-    border-bottom: 3px solid var(--azul-claro);
+    border-bottom: 3px solid var(--dourado);
     position: relative;
     overflow: hidden;
   }
-  /* wave decoration */
   .hero::before {
-    content: '〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    font-size: 28px; color: rgba(66,165,245,0.07);
-    letter-spacing: -4px; line-height: 1;
-    white-space: nowrap; overflow: hidden;
-    pointer-events: none;
+    content: '✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦';
+    position: absolute; top: 18px; left: 0; right: 0;
+    text-align: center; font-size: 11px; letter-spacing: 18px;
+    color: rgba(201,168,76,0.15); pointer-events: none;
   }
   .licao-badge {
     display: inline-block;
-    background: var(--azul-medio);
-    color: #fff;
-    font-family: 'Syne', sans-serif;
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    background: var(--dourado); color: #1a1205;
+    font-family: 'Syne', sans-serif; font-size: 11px;
+    letter-spacing: 3px; text-transform: uppercase;
     padding: 6px 18px; border-radius: 2px; margin-bottom: 22px;
+    font-weight: 700;
   }
   .hero h1 {
     font-family: 'Syne', sans-serif;
@@ -72,37 +69,60 @@
     font-weight: 800; line-height: 1.1;
     margin-bottom: 12px; color: var(--branco);
   }
-  .hero h1 span { color: var(--azul-claro); }
-  .hero p { color: #8fa8cc; font-size: 15px; max-width: 500px; margin: 0 auto 28px; }
+  .hero h1 span { color: var(--dourado-claro); }
+  .hero p { color: #9aa6c0; font-size: 15px; max-width: 500px; margin: 0 auto 28px; }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+  .quiz-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--dourado), var(--dourado-claro));
+    color: #1a1205;
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow: 0 10px 28px rgba(201,168,76,0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .quiz-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(201,168,76,0.26); }
   .meta-row { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
   .meta-pill {
     background: rgba(255,255,255,0.05); border: 1px solid var(--borda);
     padding: 8px 20px; border-radius: 100px;
-    font-size: 13px; color: #8fa8cc;
+    font-size: 13px; color: #9aa6c0;
     display: flex; align-items: center; gap: 8px;
   }
-  .meta-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--azul-claro); }
+  .meta-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dourado-claro); }
 
-  /* ── CONTAINER ── */
   .container { max-width: 780px; margin: 0 auto; padding: 0 20px 80px; }
 
   .section-title {
     font-family: 'Syne', sans-serif; font-size: 11px;
     letter-spacing: 4px; text-transform: uppercase;
-    color: var(--azul-claro);
+    color: var(--dourado-claro);
     margin: 60px 0 28px;
     display: flex; align-items: center; gap: 12px;
   }
   .section-title::after { content: ''; flex: 1; height: 1px; background: var(--borda); }
 
-  /* ── BLOCO ── */
+  /* BLOCO */
   .bloco {
     background: var(--card-bg);
     border: 1px solid var(--borda);
     border-radius: 14px; margin-bottom: 20px;
     overflow: hidden; transition: border-color 0.25s;
   }
-  .bloco:hover { border-color: var(--azul-medio); }
+  .bloco:hover { border-color: var(--dourado); }
 
   .bloco-header {
     display: flex; align-items: center; gap: 16px;
@@ -114,58 +134,59 @@
     padding: 5px 12px; border-radius: 6px;
     white-space: nowrap; min-width: 68px; text-align: center;
   }
-  .tempo-badge.amarelo  { background: var(--amarelo); }
+  .tempo-badge.amarelo  { background: #7B5800; }
   .tempo-badge.teal     { background: var(--teal); }
   .tempo-badge.vermelho { background: var(--vermelho); }
   .tempo-badge.roxo     { background: var(--roxo); }
   .tempo-badge.verde    { background: var(--verde); }
+  .tempo-badge.dourado  { background: var(--dourado); color: #1a1205; }
 
   .bloco-titulo { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; flex: 1; color: var(--branco); }
   .bloco-icone  { font-size: 20px; opacity: 0.75; }
-  .arrow        { font-size: 14px; color: #3a5070; transition: transform 0.3s; }
+  .arrow        { font-size: 14px; color: #3a4060; transition: transform 0.3s; }
   .bloco.open .arrow { transform: rotate(180deg); }
 
   .bloco-body { display: none; padding: 0 24px 26px; border-top: 1px solid var(--borda); }
   .bloco.open .bloco-body { display: block; }
-  .bloco-desc { color: #8fa8cc; font-size: 14px; margin-top: 18px; margin-bottom: 20px; line-height: 1.8; }
+  .bloco-desc { color: #9aa6c0; font-size: 14px; margin-top: 18px; margin-bottom: 20px; line-height: 1.8; }
 
-  /* ── PERGUNTA ── */
+  /* PERGUNTA */
   .pergunta-box {
-    background: rgba(13,71,161,0.15);
-    border-left: 3px solid var(--azul-claro);
+    background: rgba(201,168,76,0.1);
+    border-left: 3px solid var(--dourado-claro);
     padding: 14px 18px; border-radius: 0 8px 8px 0;
-    margin-bottom: 10px; font-size: 14px; color: #c8d8f0;
+    margin-bottom: 10px; font-size: 14px; color: #d8d0c0;
   }
   .pergunta-box strong {
-    color: var(--azul-claro); font-size: 11px; letter-spacing: 2px;
+    color: var(--dourado-claro); font-size: 11px; letter-spacing: 2px;
     text-transform: uppercase; display: block; margin-bottom: 6px; font-weight: 500;
   }
 
-  /* ── DINÂMICA ── */
+  /* DINÂMICA */
   .dinamica-box {
-    background: rgba(255,214,0,0.07); border: 1px solid rgba(255,214,0,0.2);
+    background: rgba(255,214,0,0.06); border: 1px solid rgba(255,214,0,0.18);
     border-radius: 10px; padding: 16px 18px; margin-bottom: 10px;
   }
   .dinamica-box .tag {
     font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
     color: var(--destaque); font-weight: 500; margin-bottom: 8px; display: block;
   }
-  .dinamica-box p { font-size: 14px; color: #d0c8a0; line-height: 1.8; }
+  .dinamica-box p { font-size: 14px; color: #d0c8a8; line-height: 1.8; }
 
-  /* ── VERSO ── */
+  /* VERSO */
   .verso-box {
     background: rgba(255,255,255,0.04); border-radius: 8px;
     padding: 16px 20px; margin-top: 16px;
-    text-align: center; font-style: italic; color: #9ab0cc;
+    text-align: center; font-style: italic; color: #b8bcd0;
     font-size: 14px; border: 1px solid var(--borda);
   }
   .verso-box span {
-    display: block; color: var(--azul-claro); font-style: normal;
+    display: block; color: var(--dourado-claro); font-style: normal;
     font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
     margin-bottom: 8px; font-weight: 500;
   }
 
-  /* ── DICA ── */
+  /* DICA */
   .dica {
     background: rgba(74,20,140,0.18); border: 1px solid rgba(206,147,216,0.2);
     border-radius: 8px; padding: 14px 18px; margin-top: 12px;
@@ -176,99 +197,99 @@
     font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
   }
 
-  /* ── HIGHLIGHT ── */
+  /* HIGHLIGHT */
   .highlight-box {
-    background: rgba(13,71,161,0.15); border: 1px solid rgba(66,165,245,0.2);
+    background: rgba(201,168,76,0.08); border: 1px solid rgba(240,208,128,0.2);
     border-radius: 8px; padding: 16px 18px; margin-bottom: 10px;
-    font-size: 14px; color: #c0d0e8; font-style: italic; line-height: 1.8;
+    font-size: 14px; color: #d8d0c0; font-style: italic; line-height: 1.8;
   }
   .highlight-box .fonte {
-    display: block; color: var(--azul-claro); font-style: normal;
+    display: block; color: var(--dourado-claro); font-style: normal;
     font-size: 11px; letter-spacing: 1px; margin-top: 8px;
   }
 
-  /* ── STORY CARD ── */
+  /* STORY CARD */
   .story-card {
-    background: linear-gradient(135deg, rgba(13,71,161,0.2), rgba(0,0,0,0.5));
-    border: 1px solid rgba(66,165,245,0.18);
+    background: linear-gradient(135deg, rgba(26,42,94,0.4), rgba(0,0,0,0.5));
+    border: 1px solid rgba(92,124,199,0.2);
     border-radius: 12px; padding: 20px 22px; margin-bottom: 14px;
-    font-size: 14px; color: #b8cce0; line-height: 1.8;
+    font-size: 14px; color: #b8c0d8; line-height: 1.8;
   }
   .story-card .story-title {
-    color: var(--azul-claro); font-family: 'Syne', sans-serif;
+    color: var(--dourado-claro); font-family: 'Syne', sans-serif;
     font-size: 13px; font-weight: 700; margin-bottom: 10px;
     display: flex; align-items: center; gap: 8px;
   }
 
-  /* ── TRÊS HISTÓRIAS ── */
-  .tres-historias {
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 14px 0;
-  }
-  @media(max-width:620px){ .tres-historias { grid-template-columns: 1fr; } }
-  .hist-card {
+  /* DUPLA */
+  .dupla { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+  @media(max-width:560px){ .dupla { grid-template-columns: 1fr; } }
+  .dupla-card {
     background: rgba(255,255,255,0.04); border: 1px solid var(--borda);
-    border-radius: 10px; padding: 14px 14px;
-    font-size: 13px; color: #9ab0cc; line-height: 1.6;
+    border-radius: 8px; padding: 14px; font-size: 13px; color: #9aa6c0; line-height: 1.6;
   }
-  .hist-card .hist-icon { font-size: 22px; margin-bottom: 8px; display: block; }
-  .hist-card .hist-nome {
-    color: var(--azul-claro); font-family: 'Syne', sans-serif;
-    font-size: 12px; font-weight: 700; margin-bottom: 6px;
+  .dupla-card .label {
+    color: var(--dourado-claro); font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 6px; display: block; font-weight: 500;
   }
 
-  /* ── ESCADA DO CARÁTER ── */
-  .escada { list-style: none; margin-top: 10px; }
-  .escada li {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 14px; color: #9ab0cc; margin-bottom: 8px;
+  /* SEQUÊNCIA */
+  .sequencia { list-style: none; margin-top: 10px; }
+  .sequencia li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14px; color: #9aa6c0; margin-bottom: 8px;
     padding: 10px 14px; border-radius: 8px;
     background: rgba(255,255,255,0.03); border: 1px solid var(--borda);
     line-height: 1.6;
   }
-  .escada li .step {
-    color: var(--azul-claro); font-family: 'Syne', sans-serif;
-    font-size: 12px; font-weight: 700; min-width: 80px; flex-shrink: 0;
+  .sequencia li .step {
+    color: var(--dourado-claro); font-family: 'Syne', sans-serif;
+    font-size: 12px; font-weight: 700; min-width: 26px; flex-shrink: 0;
   }
 
-  /* ── CRONOGRAMA ── */
+  ul.lista { padding-left: 20px; margin-top: 8px; }
+  ul.lista li { color: #9aa6c0; font-size: 14px; margin-bottom: 6px; }
+  ul.lista li::marker { color: var(--dourado-claro); }
+
+  /* CRONOGRAMA */
   .cronograma {
     background: var(--card-bg); border: 1px solid var(--borda);
     border-radius: 12px; overflow: hidden; margin-bottom: 40px;
   }
   .crono-titulo {
-    background: var(--azul-medio); padding: 14px 24px;
+    background: var(--dourado); color: #1a1205; padding: 14px 24px;
     font-family: 'Syne', sans-serif; font-size: 13px;
-    letter-spacing: 2px; text-transform: uppercase;
+    letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
   }
   .crono-row {
     display: flex; align-items: center; padding: 12px 24px;
     border-bottom: 1px solid var(--borda); font-size: 14px; gap: 16px;
   }
   .crono-row:last-child { border-bottom: none; }
-  .crono-min { color: var(--azul-claro); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; min-width: 50px; }
-  .crono-nome { color: #a8bcd8; flex: 1; }
-  .crono-tipo { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.06); color: #607080; }
+  .crono-min { color: var(--dourado-claro); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; min-width: 50px; }
+  .crono-nome { color: #aab0c8; flex: 1; }
+  .crono-tipo { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.06); color: #606888; }
 
-  /* ── TEXTO BASE ── */
+  /* TEXTO BASE */
   .texto-base {
-    background: linear-gradient(135deg, #030e1e, #0d1a2e);
-    border: 1px solid var(--azul-medio); border-radius: 14px;
+    background: linear-gradient(135deg, #05070d, #0d1a2e);
+    border: 1px solid var(--dourado); border-radius: 14px;
     padding: 30px; margin-bottom: 40px; text-align: center;
   }
   .texto-base .ref {
-    color: var(--azul-claro); font-size: 11px; letter-spacing: 3px;
+    color: var(--dourado-claro); font-size: 11px; letter-spacing: 3px;
     text-transform: uppercase; margin-bottom: 12px; display: block;
   }
   .texto-base blockquote {
-    font-size: clamp(14px, 2.4vw, 17px); color: #d0dff0;
+    font-size: clamp(14px, 2.4vw, 17px); color: #e0ddd0;
     font-style: italic; line-height: 1.8;
   }
 
   footer {
     text-align: center; padding: 32px 20px;
-    color: #2a3a50; font-size: 13px; border-top: 1px solid var(--borda);
+    color: #2a3050; font-size: 13px; border-top: 1px solid var(--borda);
   }
-  footer strong { color: #3a5070; }
+  footer strong { color: #4a5070; }
 
   @media(max-width:520px){
     .bloco-header { padding: 16px; gap: 10px; }
@@ -282,13 +303,16 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="licao-badge">Lição 11 · 6–12 de Junho</div>
-  <h1>Tribulações<br><span>e Confiança</span></h1>
+  <div class="licao-badge">✦ Lição 13 · 20–26 de Junho</div>
+  <h1>Por Toda<br><span>a Eternidade</span></h1>
   <p>Recapitulação interativa para a classe de jovens · Duração: <strong style="color:#fff">50 minutos</strong></p>
+  <div class="hero-actions">
+    <a class="quiz-btn" href="quiz.html">Ir para o Quiz</a>
+  </div>
   <div class="meta-row">
-    <div class="meta-pill"><span class="dot"></span> Mc 4:35–5:43</div>
+    <div class="meta-pill"><span class="dot"></span> Apocalipse 21–22</div>
     <div class="meta-pill"><span class="dot"></span> 5 blocos dinâmicos</div>
-    <div class="meta-pill"><span class="dot"></span> Tempestade · Mulher · Emaús</div>
+    <div class="meta-pill"><span class="dot"></span> Última lição do trimestre</div>
   </div>
 </div>
 
@@ -296,9 +320,9 @@
 
   <!-- TEXTO BASE -->
   <div class="texto-base">
-    <span class="ref">Isaías 41:10 · Base da semana</span>
+    <span class="ref">Apocalipse 22:20 · Base da semana</span>
     <blockquote>
-      "Por isso não tema, pois Eu estou com você; não tenha medo, pois Eu sou o seu Deus. Eu o fortalecerei, o ajudarei e o segurarei com a Minha mão direita vitoriosa."
+      "Aquele que testifica estas coisas diz: 'Certamente cedo venho.' Amém! Vem, Senhor Jesus!"
     </blockquote>
   </div>
 
@@ -308,32 +332,32 @@
     <div class="crono-titulo">⏱ Visão Geral · 50 Minutos</div>
     <div class="crono-row">
       <span class="crono-min">0–7'</span>
-      <span class="crono-nome">Abertura: "A vida sacode... Mas Ele está aqui. Confie."</span>
+      <span class="crono-nome">Abertura: "Comigo o tempo não acaba" — a ampulheta</span>
       <span class="crono-tipo">Quebra-gelo</span>
     </div>
     <div class="crono-row">
       <span class="crono-min">7–17'</span>
-      <span class="crono-nome">Bloco 1 · A Tempestade + Jó: bênçãos disfarçadas</span>
+      <span class="crono-nome">Bloco 1 · Seguindo o Cordeiro + A Noiva</span>
       <span class="crono-tipo">Ensino + Debate</span>
     </div>
     <div class="crono-row">
       <span class="crono-min">17–27'</span>
-      <span class="crono-nome">Bloco 2 · A Mulher que Tocou Jesus</span>
-      <span class="crono-tipo">Narrativa + Reflexão</span>
+      <span class="crono-nome">Bloco 2 · Face a Face — o dia em que veremos Jesus</span>
+      <span class="crono-tipo">Reflexão + Imaginação guiada</span>
     </div>
     <div class="crono-row">
       <span class="crono-min">27–37'</span>
-      <span class="crono-nome">Bloco 3 · Da Crise à Virada — Emaús e o propósito do sofrimento</span>
+      <span class="crono-nome">Bloco 3 · Aprendendo a ouvir agora + O Convite "Venha!"</span>
       <span class="crono-tipo">Debate em grupo</span>
     </div>
     <div class="crono-row">
       <span class="crono-min">37–45'</span>
-      <span class="crono-nome">Bloco 4 · Olhe para Jesus — aplicação prática</span>
-      <span class="crono-tipo">Reflexão + Aplicação</span>
+      <span class="crono-nome">Bloco 4 · Ansiando pelo Céu — ter "paladar" para a eternidade</span>
+      <span class="crono-tipo">Aplicação prática</span>
     </div>
     <div class="crono-row">
       <span class="crono-min">45–50'</span>
-      <span class="crono-nome">Encerramento: "Ele está no barco com a gente"</span>
+      <span class="crono-nome">Encerramento: "Vem, Senhor Jesus" — fechamento do trimestre</span>
       <span class="crono-tipo">Compromisso + Oração</span>
     </div>
   </div>
@@ -345,26 +369,26 @@
   <div class="bloco open">
     <div class="bloco-header" onclick="toggle(this)">
       <span class="tempo-badge amarelo">0–7 min</span>
-      <span class="bloco-icone">⛵</span>
-      <span class="bloco-titulo">Abertura — A vida sacode. Mas Ele está aqui.</span>
+      <span class="bloco-icone">⏳</span>
+      <span class="bloco-titulo">Abertura — "Comigo o tempo não acaba"</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Comece direto na realidade dos jovens. A tirinha da lição resume tudo em três painéis: a vida sacode, Ele está aqui, confie. Use essa progressão como âncora visual para a aula inteira.
+        A tirinha da lição mostra Jesus virando uma ampulheta sem fim para o jovem cansado do tempo. É a imagem perfeita para abrir a última lição do trimestre — que fala sobre a eternidade que está vindo.
       </p>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Dinâmica de abertura — 4 minutos</span>
-        <p>Pergunte para a turma — sem julgamento, sem pressão:<br><br>
-        <strong style="color:#FFD600">"Qual foi a maior 'tempestade' que você já enfrentou — ou está enfrentando agora? E qual foi sua primeira reação: clamar a Deus, tentar resolver sozinho, ou questionar se Ele se importava?"</strong><br><br>
-        Deixe 3 ou 4 voluntários responderem. Depois faça a virada com a pergunta da lição de segunda:<br><br>
-        <em style="color:#aaa;">"Os discípulos estavam no mesmo barco que Jesus — e ainda acharam que Ele não se importava com eles. Se até eles sentiram isso, o que nos diz sobre o que sentimos nas nossas tempestades?"</em></p>
+        <span class="tag">✦ Dinâmica de abertura — 5 minutos</span>
+        <p>Pergunte para a turma:<br><br>
+        <strong style="color:#FFD600">"Se alguém te perguntasse agora 'o que você mais espera viver na eternidade?' — o que você responderia, sem pensar muito, na primeira coisa que vier à mente?"</strong><br><br>
+        Deixe 4 ou 5 voluntários responderem rapidamente. Depois compartilhe o que a lição de domingo menciona: uma criança pode dizer "montar num tigre" ou "voar para outros planetas"; um adolescente pode dizer "não ter mais lição de casa". Pergunte:<br><br>
+        <em style="color:#aaa;">"Será que essas respostas — incluindo as nossas — captam o que realmente importa sobre a eternidade? A lição diz que a maior de todas as bênçãos do Céu será ver Jesus face a face. Por que essa resposta raramente é a primeira que vem à mente?"</em></p>
       </div>
 
       <div class="dica">
-        <strong>💡 Ponto de ancoragem para a aula</strong>
-        A frase da tirinha — "A vida sacode... Mas Ele está aqui. Confie." — é o esqueleto de toda a lição desta semana. Volte a ela ao longo da aula. Cada bloco ilustra uma parte dessa frase com uma história diferente.
+        <strong>💡 Contexto da imagem da ampulheta</strong>
+        A areia que nunca acaba representa exatamente o que Apocalipse 21-22 promete: um tempo sem fim, vivido na presença de Jesus. Essa é a última lição do trimestre — um bom momento para fazer um fechamento emocional e espiritual com a turma.
       </div>
     </div>
   </div>
@@ -373,46 +397,33 @@
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
       <span class="tempo-badge">7–17 min</span>
-      <span class="bloco-icone">🌊</span>
-      <span class="bloco-titulo">Bloco 1 — A Tempestade e Jó: Bênçãos Disfarçadas</span>
+      <span class="bloco-icone">💍</span>
+      <span class="bloco-titulo">Bloco 1 — Seguindo o Cordeiro + A Noiva</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula domingo e segunda. Dois cenários paralelos: a tempestade no Mar da Galileia e a vida de Jó. Em ambos, a sensação era de abandono total. Em ambos, havia um propósito que só seria visto depois.
+        Recapitula domingo e segunda. João, exilado em Patmos, recebeu uma visão de como será a reunião final entre Deus e Seu povo — e descreveu usando a imagem mais íntima possível: um casamento. O povo de Deus é chamado de "noiva" (Ap 19:7), e a própria cidade celestial também é chamada de "noiva" (Ap 21:2).
       </p>
 
-      <div class="tres-historias">
-        <div class="hist-card">
-          <span class="hist-icon">⚡</span>
-          <div class="hist-nome">Os Discípulos</div>
-          Pescadores experientes. Conheciam o mar. Mas naquela tempestade, acharam que iriam morrer. E Jesus dormia na popa — na almofada do guia da embarcação. A reação deles: "Mestre, não Te importas se morrermos?"
-        </div>
-        <div class="hist-card">
-          <span class="hist-icon">💔</span>
-          <div class="hist-nome">Jó</div>
-          Perdeu bens, filhos e saúde. A esposa sugeriu que amaldiçoasse a Deus e morresse. Três amigos chegaram e, ao tentar ajudar, aumentaram a dor. Mas Jó se agarrou a Deus — mesmo sem entender o porquê.
-        </div>
-        <div class="hist-card">
-          <span class="hist-icon">🕊️</span>
-          <div class="hist-nome">O Resultado</div>
-          Em ambos os casos, Deus estava presente e no controle — só não era visível naquele momento. "Na vida futura, os mistérios que aqui nos inquietaram serão esclarecidos" (E. G. White).
-        </div>
+      <div class="pergunta-box">
+        <strong>🗣 Pergunta de aquecimento (2 min)</strong>
+        "Por que você acha que Deus escolheu a imagem de um casamento — e não, por exemplo, uma cerimônia de premiação ou uma festa qualquer — para descrever o reencontro final com Seu povo? O que essa escolha revela sobre como Deus vê esse relacionamento?"
+      </div>
+
+      <div class="story-card">
+        <div class="story-title">📖 A dupla "noiva" em Apocalipse</div>
+        É interessante notar que a Bíblia chama tanto o povo de Deus (Ap 19:7) quanto a cidade — a Nova Jerusalém (Ap 21:2) — de "noiva". Apocalipse 21 mostra que há uma ligação íntima entre o povo e a cidade: ambos representam o mesmo Reino, a mesma realidade de estar para sempre com Deus.
       </div>
 
       <div class="pergunta-box">
-        <strong>💬 Debate central (5 min)</strong>
-        "A lição diz que 'é justamente nas tempestades da vida que o Senhor costuma operar Seus maiores milagres.' Por que Deus permite tempestades em vez de simplesmente evitá-las? O que uma tempestade pode produzir que a calmaria não consegue?"
-      </div>
-
-      <div class="pergunta-box">
-        <strong>🔎 Para aprofundar</strong>
-        "Satanás usa dor, perdas e dificuldades para distorcer nossa visão do Deus de amor. Nessas horas, a lição diz que temos duas opções: rejeitar o Senhor ou nos apegar a Ele com todas as forças. Por que a segunda opção parece tão difícil no meio da dor?"
+        <strong>💬 Debate (4 min)</strong>
+        "A lição diz que Jesus está preparando um lugar tão extraordinário que 'palavras humanas não dão conta de descrever'. Mesmo sem conseguir imaginar tudo isso com clareza, Paulo nos convida: 'Pensem nas coisas lá do alto, e não nas que são aqui da terra' (Cl 3:2). Como pensar na eternidade — mesmo sem entendê-la completamente — pode mudar decisões concretas que tomamos hoje?"
       </div>
 
       <div class="verso-box">
-        <span>2 Coríntios 4:16–18</span>
-        "Não desanimamos [...] porque o que é leve e momentâneo em nosso sofrimento está produzindo para nós um peso eterno de glória que ultrapassa tudo."
+        <span>Mateus 25:13</span>
+        Jesus nos garante com cuidado — e não quer que esse "casamento" nos pegue de surpresa. O Universo inteiro assistirá a esse acontecimento, e nós estaremos no centro dessa história.
       </div>
     </div>
   </div>
@@ -421,37 +432,34 @@
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
       <span class="tempo-badge teal">17–27 min</span>
-      <span class="bloco-icone">🤲</span>
-      <span class="bloco-titulo">Bloco 2 — A Mulher que Tocou Jesus</span>
+      <span class="bloco-icone">👁️</span>
+      <span class="bloco-titulo">Bloco 2 — Face a Face</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula terça. Uma mulher que sofria há 12 anos — gasto tudo com médicos, sem melhora, piorando — decide sair de casa e ir até Jesus. Ela não esperou perfeição, condições ideais ou força. Ela foi assim mesmo.
+        Recapitula terça. Este é o coração emocional da lição: um dia veremos Jesus — de verdade, com nossos próprios olhos. Não mais por fé, não mais através da Bíblia ou da oração, mas face a face.
       </p>
 
-      <div class="story-card">
-        <div class="story-title">📖 O que torna essa história extraordinária</div>
-        Ela poderia ter ficado em casa — amedrontada, frágil, abatida. Havia uma multidão comprimindo Jesus de todos os lados. Ela era impura pela lei (Lv 15:25) e não devia estar em público. Mas foi. Entre empurrões, ela O viu. E motivou a si mesma: "Se eu apenas tocar na roupa Dele, ficarei curada." Ela tocou — e Jesus parou. Não foi o toque que a curou: foi a fé que o motivou. Jesus declarou: "Filha, a sua fé salvou você."
-      </div>
-
-      <div class="pergunta-box">
-        <strong>🗣 Pergunta de reflexão pessoal (3 min)</strong>
-        "A lição diz que muitos O tocaram naquele dia, levados pelo movimento da multidão — mas apenas ela O tocou com fé, de forma intencional. Qual é a diferença entre 'participar de atividades religiosas por rotina' e 'buscar Jesus com intenção'? Em qual dos dois grupos você está mais frequentemente?"
+      <div class="sequencia">
+        <li><span class="step">1</span> Uma pequena nuvem branca surge no céu — quase imperceptível</li>
+        <li><span class="step">2</span> Ao se aproximar, vemos Alguém "semelhante a filho de homem" (Ap 14:14)</li>
+        <li><span class="step">3</span> Jesus vem acompanhado por milhões e milhões de anjos (Mt 25:31)</li>
+        <li><span class="step">4</span> "Todo olho O verá" (Ap 1:7) — ouvimos o brado do Senhor e a trombeta de Deus</li>
+        <li><span class="step">5</span> Os mortos em Cristo ressuscitam primeiro (1Ts 4:16) e reconhecem a voz Daquele que os chama (Jo 5:28)</li>
+        <li><span class="step">6</span> Subimos para encontrá-Lo nas nuvens — e O vemos face a face</li>
       </div>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Dinâmica de identificação (3 min)</span>
-        <p>Pergunte à turma:<br><br>
-        <strong style="color:#FFD600">"Quais barreiras tornavam difícil para essa mulher chegar até Jesus? Agora pense na sua vida — quais são as suas 'barreiras' para se aproximar de Jesus quando você mais precisa?"</strong><br><br>
-        Barreiras dela: impureza legal, multidão, vergonha, fraqueza física, anos de decepção com "soluções".<br>
-        Barreiras nossas: ___ (deixe a turma completar)<br><br>
-        <em style="color:#aaa;">O objetivo é personalizar a história — não deixá-la no século I.</em></p>
+        <span class="tag">✦ Imaginação guiada — 4 minutos</span>
+        <p>Peça que a turma fique em silêncio por 30 segundos e imagine a cena: o céu se abrindo, a trombeta soando, e o momento exato em que cada um veria o rosto de Jesus por primeira vez.<br><br>
+        <strong style="color:#FFD600">"O que você acha que vai pensar e sentir nesse instante?"</strong><br><br>
+        Deixe quem quiser compartilhar. Esse é um momento mais contemplativo do que debate — respeite o silêncio de quem preferir não falar.</p>
       </div>
 
       <div class="highlight-box">
-        "Aquela mulher frágil, abatida pelo sofrimento, poderia ter ficado em casa, deitada em sua cama. Mas, em vez disso, saiu voluntariamente para encontrar Jesus, movida pela esperança de cura e pelo desejo de se aproximar Dele. Vê-Lo de longe não bastava; ela se aproximou até tocá-Lo."
-        <span class="fonte">— Lição de terça-feira, 9 de Junho</span>
+        "Que verdade extraordinária e maravilhosa! Um dia veremos Jesus — de verdade. Ouviremos Sua voz e confessaremos que Ele é o Senhor. Aquele sobre quem lemos, a quem oramos, de quem falamos; Aquele por quem nosso coração sempre ansiou... nós O veremos face a face!"
+        <span class="fonte">— Lição de terça-feira, 23 de Junho</span>
       </div>
     </div>
   </div>
@@ -460,40 +468,39 @@
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
       <span class="tempo-badge vermelho">27–37 min</span>
-      <span class="bloco-icone">🛤️</span>
-      <span class="bloco-titulo">Bloco 3 — Da Crise à Virada: Emaús e o Propósito do Sofrimento</span>
+      <span class="bloco-icone">📢</span>
+      <span class="bloco-titulo">Bloco 3 — Aprendendo a Ouvir Agora + O Convite "Venha!"</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula quarta e quinta. Dois discípulos a caminho de Emaús — destruídos, confusos, sem esperança. Uma crise tão grande que não reconheceram Jesus ao lado deles. Mas a crise era, na verdade, uma virada disfarçada.
+        Recapitula quarta e quinta. Se na eternidade seguiremos o Cordeiro por onde quer que Ele vá (Ap 7:17), agora — hoje — somos chamados a aprender a ouvir Sua voz e seguir Sua direção diariamente. E o convite de Deus nunca parou: "Venha!"
       </p>
 
       <div class="pergunta-box">
         <strong>🗣 Pergunta de abertura do bloco (2 min)</strong>
-        "Os discípulos de Emaús conheciam Jesus — mas seus olhos foram impedidos de reconhecê-Lo (Lc 24:16). Você já passou por uma situação em que, só depois, percebeu que Deus estava agindo o tempo todo — mas você não O reconhecia na hora? O que essa experiência te ensinou?"
+        "A lição de quarta diz que aprender a ouvir a voz de Deus diariamente 'muitas vezes desafia nossa vontade, mas molda nosso caráter e fortalece nossa confiança'. Em que área da sua vida seguir a voz de Deus tem sido mais desafiador ultimamente?"
       </div>
 
-      <div class="story-card">
-        <div class="story-title">🔥 O que aconteceu no caminho de Emaús</div>
-        Jesus Se aproximou deles como um "estranho". Mesmo sem saber com quem falavam, o coração deles começou a arder quando Ele explicou as Escrituras. Eles queriam que ficasse. E quando partiram o pão juntos — O reconheceram. E naquele momento Ele desapareceu. A lição é clara: às vezes Jesus revela Sua presença justamente quando nossos olhos estão mais fechados pela dor.
+      <div class="dupla">
+        <div class="dupla-card">
+          <span class="label">O convite nunca foi retirado</span>
+          "O que vem a Mim, de modo nenhum o lançarei fora" (Jo 6:37). A água da vida é oferecida a toda pessoa sedenta — gratuitamente, dádiva da graça (Ap 22:17). Não há fila de espera, não há condição prévia.
+        </div>
+        <div class="dupla-card">
+          <span class="label">Quem aceita, sente urgência de chamar outros</span>
+          A lição de quinta diz: "Quem prova [da água da vida] deseja que outros também provem." Um relacionamento real com Jesus não fica guardado — ele naturalmente quer compartilhar.
+        </div>
       </div>
 
       <div class="pergunta-box">
-        <strong>💬 Debate em grupo (5 min)</strong>
-        "A lição de quarta diz que 'as provações moldam nosso caráter e fortalecem nossa fé, aproximando-nos de Deus e tornando-nos mais parecidos com Cristo' (Rm 5:3-5). Mas isso parece bonito no papel. Na prática, como alguém mantém essa perspectiva no meio da dor — quando tudo que se sente é que Deus está distante ou em silêncio?"
+        <strong>💬 Debate (4 min)</strong>
+        "A lição de quinta imagina que, na ressurreição, nosso primeiro pensamento pode ser: 'Senhor, como a Sua volta foi breve!' — porque, da perspectiva de quem morre, o próximo instante já é a volta de Cristo. Como essa ideia muda a forma de pensar sobre tempo, espera e ansiedade pelo futuro?"
       </div>
 
-      <ul class="escada">
-        <li><span class="step">Tribulação →</span> produz perseverança (Rm 5:3)</li>
-        <li><span class="step">Perseverança →</span> produz caráter aprovado (Rm 5:4)</li>
-        <li><span class="step">Caráter →</span> produz esperança (Rm 5:4)</li>
-        <li><span class="step">Esperança →</span> não decepciona, porque Deus derramou Seu amor em nós (Rm 5:5)</li>
-      </ul>
-
-      <div class="dica">
-        <strong>💡 Ponto de ancoragem</strong>
-        "Nada do que parece inútil ou trágico pega Deus de surpresa. Em Cristo, a derrota se converte em vitória." — A lição de quinta. Use isso como âncora no final do bloco — especialmente se algum jovem estiver passando por algo difícil.
+      <div class="verso-box">
+        <span>Apocalipse 22:17</span>
+        "O Espírito e a noiva dizem: 'Vem!' Aquele que ouve, diga: 'Vem!' Aquele que tem sede venha, e quem quiser receba de graça a água da vida."
       </div>
     </div>
   </div>
@@ -502,35 +509,33 @@
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
       <span class="tempo-badge roxo">37–45 min</span>
-      <span class="bloco-icone">👁️</span>
-      <span class="bloco-titulo">Bloco 4 — Olhe para Jesus: Aplicação Prática</span>
+      <span class="bloco-icone">🍯</span>
+      <span class="bloco-titulo">Bloco 4 — Ansiando pelo Céu: ter "Paladar" para a Eternidade</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Recapitula sexta. Ellen G. White teve um sonho: numa escada íngreme, o guia a aconselhou a "conservar o olhar fixo para cima". Aqueles que olhavam para baixo — para as pedras, para o perigo — caíam. Os que mantinham os olhos no alto chegavam. Isso é o resumo prático de toda a semana.
+        Recapitula sexta. Uma ideia poderosa e pouco discutida: o Céu não é automático para quem nunca desenvolveu gosto por ele agora. Ellen White afirma que quem se acostuma ao "alimento terreno" não estará apto a apreciar o ambiente celestial — as vozes dos anjos não satisfariam, a música não tocaria o coração.
       </p>
 
+      <div class="highlight-box">
+        "Se não recebermos a religião de Cristo, nutrindo-nos da Palavra de Deus, não teremos direito à entrada na cidade de Deus. Havendo vivido de alimento terreno, tendo educado nosso gosto a amar as coisas do mundo, não estaríamos aptos para as cortes celestes [...]. Precisamos ter fome e sede da justiça de Cristo."
+        <span class="fonte">— Ellen G. White, A Fé Pela Qual Eu Vivo, 25 de dezembro</span>
+      </div>
+
       <div class="pergunta-box">
-        <strong>🗣 Pergunta pessoal e direta (3 min)</strong>
-        "A lição de sexta diz: 'Quando Seu olhar pousou sobre mim, vi logo que Ele estava familiarizado com todos os acontecimentos de minha vida e todos os meus íntimos pensamentos e sentimentos.' Se Jesus olhasse para você agora — e já sabe exatamente o que está acontecendo — o que você acha que Ele diria?"
+        <strong>🗣 Pergunta de aplicação direta (3 min)</strong>
+        "Se o Céu exige um 'paladar' desenvolvido agora — fome e sede da justiça de Cristo — o que isso muda na forma como você pensa sobre hábitos espirituais diários? Eles não são só regras religiosas: são treino de gosto para a eternidade. O que você precisaria 'comer' mais hoje para estar mais apto para amanhã?"
       </div>
 
-      <div class="dinamica-box">
-        <span class="tag">✦ Dinâmica prática — "O que te faz olhar para baixo?" (4 min)</span>
-        <p>Na escada do sonho de EGW, as pessoas caíam quando desviavam o olhar para baixo. Pergunte à turma:<br><br>
-        <strong style="color:#FFD600">"O que mais te faz 'olhar para baixo' nas tempestades da vida — ou seja, o que desvia seu olhar de Jesus para o problema?"</strong><br><br>
-        🔹 As redes sociais mostrando que a vida dos outros parece perfeita<br>
-        🔹 A voz que diz "você é o único que passa por isso"<br>
-        🔹 O cansaço acumulado que faz a fé parecer ingênua<br>
-        🔹 A comparação: "Orei, mas nada mudou"<br>
-        🔹 Outra coisa — o que os jovens disserem<br><br>
-        <em style="color:#aaa;">Depois: "E o que te ajuda a voltar o olhar para cima? O que funciona na prática para você?"</em></p>
+      <div class="pergunta-box">
+        <strong>💬 Debate final (3 min)</strong>
+        "Ellen White descreve o fim do grande conflito assim: 'Pecado e pecadores não mais existem [...] desde o minúsculo átomo até o maior dos mundos, todas as coisas [...] declaram que Deus é amor.' O que mais te emociona nessa descrição — e o que parece mais difícil de imaginar de verdade?"
       </div>
 
-      <div class="verso-box">
-        <span>Isaías 41:10</span>
-        "Não tema, pois Eu estou com você; não tenha medo, pois Eu sou o seu Deus. Eu o fortalecerei, o ajudarei e o segurarei com a Minha mão direita vitoriosa."
+      <div class="dica">
+        <strong>💡 Ponto-chave para reforçar</strong>
+        A vida cristã hoje não é apenas sobre "passar de ano" ou "evitar o inferno" — é sobre desenvolver, agora, o caráter e o apetite espiritual que vão te fazer sentir em casa na eternidade. O Céu não muda você de repente; Ele recebe quem já está sendo transformado.
       </div>
     </div>
   </div>
@@ -538,33 +543,32 @@
   <!-- ENCERRAMENTO -->
   <div class="bloco">
     <div class="bloco-header" onclick="toggle(this)">
-      <span class="tempo-badge verde">45–50 min</span>
-      <span class="bloco-icone">⚓</span>
-      <span class="bloco-titulo">Encerramento — Ele Está no Barco com a Gente</span>
+      <span class="tempo-badge dourado">45–50 min</span>
+      <span class="bloco-icone">✦</span>
+      <span class="bloco-titulo">Encerramento — "Vem, Senhor Jesus"</span>
       <span class="arrow">▼</span>
     </div>
     <div class="bloco-body">
       <p class="bloco-desc">
-        Feche conectando todas as histórias da semana ao mesmo ponto central: em nenhuma delas Deus estava ausente. Dormindo na popa, presente no caminho de Emaús, parando em meio à multidão — Ele estava sempre lá. E está agora.
+        Esta é a última lição do trimestre. Feche com um momento especial — não apenas encerrando a semana, mas todo o ciclo de estudo sobre crescer em relacionamento com Deus.
       </p>
 
       <div class="dinamica-box">
-        <span class="tag">✦ Encerramento em roda — "Minha âncora" (4 min)</span>
-        <p>Peça que cada jovem (quem quiser) complete uma das frases:<br><br>
-        ⚓ <strong style="color:#FFD600">"A maior tempestade que já enfrentei me ensinou que Deus..."</strong><br>
-        ⚓ <strong style="color:#FFD600">"Quando não consigo sentir a presença de Deus, o que me ancora é..."</strong><br>
-        ⚓ <strong style="color:#FFD600">"Depois dessa semana, quero parar de olhar para _____ e começar a olhar para _____."</strong><br><br>
-        Não force. O silêncio é bem-vindo. Você fecha com uma oração curta usando Isaías 41:10 como declaração coletiva.</p>
+        <span class="tag">✦ Encerramento do trimestre — 4 minutos</span>
+        <p>Pergunte à turma:<br><br>
+        <strong style="color:#FFD600">"De tudo que estudamos neste trimestre — sobre a Bíblia, a oração, a fé, o arrependimento, as tribulações — o que mais marcou você? O que você quer levar para o próximo trimestre?"</strong><br><br>
+        Deixe alguns compartilharem brevemente. Depois, convide a turma a responder em voz alta, juntos, como uma declaração coletiva:<br><br>
+        <strong style="color:var(--dourado-claro)">"Amém! Vem, Senhor Jesus!" (Ap 22:20)</strong></p>
       </div>
 
       <div class="verso-box">
-        <span>Para encerrar — Mc 4:39–40</span>
-        "Ele Se levantou, repreendeu o vento e disse ao mar: 'Aquieta-te! Sossega!' O vento cessou, e houve grande calmaria. E disse-lhes: 'Por que estão tão assustados? Ainda não têm fé?'" — Ele ainda pergunta isso a nós hoje.
+        <span>Para encerrar em oração</span>
+        Ore agradecendo pelo trimestre de estudo, pelo crescimento de cada jovem, e peça que o desejo pela eternidade continue ardendo no coração de cada um — não como fuga da vida presente, mas como combustível para viver com propósito agora.
       </div>
 
       <div class="dica">
-        <strong>💡 Retome a tirinha do início</strong>
-        Feche voltando aos três painéis: "A vida sacode — isso é real, todos vocês vivem isso. Mas Ele está aqui — não como promessa vaga, mas como Alguém que dormiu na popa do barco, parou em meio à multidão por uma pessoa invisível, e caminhou ao lado de dois homens destruídos sem que eles soubessem. Confie."
+        <strong>💡 Retome o quebra-gelo da ampulheta</strong>
+        Feche dizendo: "No início da aula, falamos sobre o tempo que parece nunca ser suficiente. Mas com Jesus, o tempo não acaba — começa de verdade. Que esta semana vocês vivam como quem já está esperando esse 'casamento', com os olhos voltados para cima."
       </div>
     </div>
   </div>
@@ -573,23 +577,23 @@
   <p class="section-title">Perguntas Extras se Sobrar Tempo</p>
 
   <div class="pergunta-box">
-    <strong>➕ Bônus 1 — Sobre os amigos de Jó</strong>
-    "Os amigos de Jó chegaram, ficaram 7 dias em silêncio — e depois começaram a falar, tentando explicar o sofrimento com razões humanas. Acabaram aumentando a dor de Jó. O que isso ensina sobre como acompanhar alguém que está passando por uma tribulação? Quando o silêncio é mais sábio do que as palavras?"
+    <strong>➕ Bônus 1 — Sobre a linguagem humana</strong>
+    "Ellen White escreveu que 'a linguagem humana não consegue descrever a recompensa dos justos... nenhuma mente finita consegue compreender a glória do paraíso de Deus' (O Grande Conflito, p. 558). Por que você acha que Deus escolheu nos dar apenas vislumbres da eternidade, em vez de uma descrição completa?"
   </div>
   <div class="pergunta-box">
-    <strong>➕ Bônus 2 — Sobre o único registro de Jesus dormindo</strong>
-    "A lição destaca que esse é o único registro, nos evangelhos, de Jesus dormindo. No momento mais aterrorizante da vida dos discípulos, Jesus descansava. O que isso revela sobre o caráter de Jesus e sobre como Ele via aquela situação — diferente de como os discípulos a viam?"
+    <strong>➕ Bônus 2 — Sobre crescimento eterno</strong>
+    "A lição de sexta diz que, na eternidade, 'o conhecimento é progressivo' e 'também o amor, a reverência e a felicidade aumentarão'. Isso significa que a eternidade não é estática — é crescimento sem fim. Como essa ideia muda a forma de ver a eternidade como algo 'enfadonho' ou 'sempre igual'?"
   </div>
   <div class="pergunta-box">
     <strong>➕ Bônus 3 — Para os mais corajosos</strong>
-    "A lição diz que 'quando escolhemos olhar para Jesus e confiar, as tempestades se tornam oportunidades para fortalecer a fé e renovar a esperança.' Você realmente acredita nisso — ou essa frase soa bem no papel mas difícil na prática? Seja honesto: o que te impede de aplicar isso na sua tempestade atual?"
+    "A lição de domingo pergunta: o que você mais espera viver na eternidade? Depois de toda essa semana de estudo, sua resposta mudou? O que isso revela sobre onde está o foco do seu coração agora?"
   </div>
 
 </div>
 
 <footer>
-  Lição 11 · <strong>Tribulações e Confiança</strong> · 6–12 de Junho · Mc 4:35–5:43<br>
-  Estrutura para recapitulação jovem · 50 minutos
+  Lição 13 · <strong>Por Toda a Eternidade</strong> · 20–26 de Junho · Apocalipse 21–22<br>
+  Estrutura para recapitulação jovem · 50 minutos · Última lição do trimestre
 </footer>
 
 <script>
